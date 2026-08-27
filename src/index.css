@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bglight: #EAEFEF;
+  --color-bgcard: #ffffff;
+  --color-accent: #2563eb;
+}
+
+body {
+  background-color: var(--color-bglight);
+}

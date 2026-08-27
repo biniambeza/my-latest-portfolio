@@ -11,23 +11,23 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+    <nav className="fixed top-0 left-0 w-full bg-[#EAEFEF] z-50 border-b border-gray-300 shadow-sm">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#hero" className="text-xl font-bold text-gray-900">
-          Biniam<span className="text-blue-600">.</span>
+          Biniam<span className="text-[#2563eb]">.</span>
         </a>
 
-        <ul className="hidden md:flex gap-8 text-gray-600 font-medium">
+        <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a href={link.href} className="hover:text-blue-600 transition-colors">
+              <a href={link.href} className="hover:text-[#2563eb] transition-colors">
                 {link.name}
               </a>
             </li>
           ))}
         </ul>
 
-        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hidden md:inline-block bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors">
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hidden md:inline-block bg-[#2563eb] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-[#1d4ed8] transition-colors">
           Resume
         </a>
 
@@ -43,10 +43,10 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <ul className="md:hidden flex flex-col gap-4 px-6 pb-6 text-gray-600 font-medium">
+        <ul className="md:hidden flex flex-col gap-4 px-6 pb-6 text-gray-700 font-medium">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a href={link.href} onClick={() => setIsOpen(false)} className="block hover:text-blue-600">
+              <a href={link.href} onClick={() => setIsOpen(false)} className="block hover:text-[#2563eb]">
                 {link.name}
               </a>
             </li>
