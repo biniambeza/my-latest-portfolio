@@ -66,7 +66,7 @@ export default function Hero() {
         >
           I build things for the web.
           <span
-            className="inline-block w-0.75 h-6 md:h-7 bg-[#4F46E5] ml-1"
+            className="inline-block w-0.75 h-6 md:h-7 bg-accent ms-1"
             style={{ opacity: cursorOn ? 1 : 0 }}
           />
         </h2>
@@ -80,7 +80,7 @@ export default function Hero() {
         <div className="fade-up-5 flex flex-col sm:flex-row gap-4">
           <a
             href="#projects"
-            className="bg-[#4F46E5] text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:bg-[#4338CA] hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            className="bg-accent text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:bg-accent-purple hover:shadow-indigo-500/40 hover:-translate-y-0.5"
           >
             View My Work
           </a>

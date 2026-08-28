@@ -9,41 +9,37 @@ export default function CertificateCard({ certificate }) {
     .toUpperCase();
 
   const CardInner = (
-    <div className="group relative h-full flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-black/6 dark:border-zinc-800 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 hover:border-transparent dark:hover:border-transparent">
+    <div className="group relative h-full flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-black/10 dark:border-zinc-800 p-3 md:p-4 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 hover:border-indigo-300 dark:hover:border-indigo-800">
       <div className="relative flex flex-col h-full">
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="w-12 h-12 rounded-xl object-cover mb-4 border border-black/6 dark:border-zinc-700"
-          />
-        ) : (
-          <div
-            className="w-12 h-12 rounded-xl mb-4 flex items-center justify-center text-white text-sm font-bold bg-[#4F46E5] shadow-sm shadow-indigo-500/20"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            {initials}
-          </div>
-        )}
+        <div className="flex items-center justify-between mb-4">
+          {image ? (
+            <img
+              src={image}
+              alt={title}
+              className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover border border-black/6 dark:border-zinc-700"
+            />
+          ) : (
+            <div
+              className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center text-white text-sm font-bold bg-accent shadow-sm shadow-indigo-500/20"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
+              {initials}
+            </div>
+          )}
+          <span className="text-[10px] font-bold text-black/30 dark:text-white/30" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            {date || "N/A"}
+          </span>
+        </div>
 
         <h3
-          className="text-[15px] font-bold text-[#12141C] dark:text-zinc-100 mb-1 leading-snug transition-colors"
+            className="text-sm md:text-base font-bold text-[#12141C] dark:text-zinc-100 mb-2 leading-snug transition-colors"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           {title}
         </h3>
         <p className="text-sm text-[#6B7280] dark:text-zinc-400 mb-1 transition-colors">{issuer}</p>
-        {date && (
-          <p
-            className="text-xs text-[#9CA3AF] dark:text-zinc-500 mb-4 transition-colors"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            {date}
-          </p>
-        )}
-
         {link && (
-          <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-accent dark:text-indigo-400 group-hover:text-accent-purple dark:group-hover:text-indigo-300 transition-colors">
+          <span className="mt-auto pt-3 md:pt-5 inline-flex items-center gap-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-accent dark:text-indigo-400 group-hover:text-accent-purple dark:group-hover:text-indigo-300 transition-colors" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             View credential
             <svg
               width="13"

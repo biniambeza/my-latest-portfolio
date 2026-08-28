@@ -1,8 +1,8 @@
 export default function Card({ project }) {
-  const { title, description, image, tags, demo, github } = project;
+  const { title, description, image, tags, live, demo, github, id } = project;
 
   return (
-    <div className="group flex flex-col h-full bg-white dark:bg-zinc-900 rounded-2xl border border-black/6 dark:border-zinc-800 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 dark:hover:border-zinc-700">
+    <article className="group flex flex-col h-full bg-white dark:bg-zinc-900 rounded-2xl border border-black/10 dark:border-zinc-800 overflow-hidden shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-900/10 dark:hover:shadow-black/40 dark:hover:border-indigo-800">
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-[#12141C] dark:bg-zinc-950">
         {image ? (
@@ -12,7 +12,7 @@ export default function Card({ project }) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-[#4F46E5]">
+          <div className="w-full h-full flex items-center justify-center bg-accent">
             <span
               className="text-white/90 text-lg font-bold tracking-tight"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -21,16 +21,25 @@ export default function Card({ project }) {
             </span>
           </div>
         )}
+        <div className="absolute inset-x-0 top-0 flex items-center justify-between px-4 py-3 bg-[#12141C]/80 text-white/70">
+          <span className="text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            project {String(id).padStart(2, "0")}
+          </span>
+          <span className="w-2 h-2 rounded-full bg-[#27C93F] shadow-[0_0_0_3px_rgba(39,201,63,0.18)]" />
+        </div>
       </div>
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-5">
-        <h3
-          className="text-lg font-bold text-[#12141C] dark:text-zinc-100 mb-2 tracking-tight transition-colors"
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3
+            className="text-lg font-bold text-[#12141C] dark:text-zinc-100 tracking-tight transition-colors"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-        >
-          {title}
-        </h3>
+          >
+            {title}
+          </h3>
+          <span className="text-indigo-200 dark:text-indigo-900 text-2xl leading-none" aria-hidden="true">↗</span>
+        </div>
         <p className="text-sm text-[#6B7280] dark:text-zinc-400 leading-relaxed mb-4 flex-1 transition-colors">
           {description}
         </p>
@@ -50,9 +59,9 @@ export default function Card({ project }) {
         )}
 
         <div className="flex items-center gap-4 pt-4 border-t border-black/6 dark:border-zinc-800 transition-colors">
-          {demo && (
+          {(live || demo) && (
             <a
-              href={demo}
+              href={live || demo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent dark:text-indigo-400 hover:text-accent-purple dark:hover:text-indigo-300 transition-colors"
@@ -78,6 +87,6 @@ export default function Card({ project }) {
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

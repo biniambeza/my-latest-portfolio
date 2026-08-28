@@ -37,7 +37,7 @@ export default function About() {
             Built with intent.
             <span className="block text-accent dark:text-indigo-400">Made to matter.</span>
           </h2>
-          <div className="w-16 h-1 bg-[#4F46E5] mb-7" />
+          <div className="w-16 h-1 bg-accent mb-7" />
           <p className="max-w-xl text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-4">
             I'm a developer who enjoys turning ideas into clean, functional web experiences. I
             care about readable code, responsive interfaces, and the small details that make a
@@ -73,7 +73,7 @@ export default function About() {
         </div>
 
         <div className="relative w-full">
-          <div className="absolute -top-5 -right-4 md:-right-7 bg-[#4F46E5] text-white px-4 py-2 text-xs font-bold tracking-wide z-10" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <div className="absolute -top-5 -right-4 md:-right-7 bg-accent text-white px-4 py-2 text-xs font-bold tracking-wide z-10" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             available for good work
           </div>
           <div className="rounded-2xl bg-[#12141C] dark:bg-black shadow-2xl shadow-black/40 overflow-hidden border border-[#12141C] dark:border-zinc-800">

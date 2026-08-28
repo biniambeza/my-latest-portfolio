@@ -17,27 +17,33 @@ export default function Projects() {
       id="projects" 
       className="relative min-h-screen scroll-mt-20 py-28 px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
-      {/* Ambient background glow blobs */}
       <div className="relative max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <p
-            className="text-accent dark:text-indigo-400 mb-3 text-sm"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            // my work
-          </p>
-          <h2
-            className="text-3xl md:text-4xl font-bold text-[#12141C] dark:text-zinc-100 mb-4 tracking-tight"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            Recent Projects
-          </h2>
-          <p className="text-[#6B7280] dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
-            A few things I've built recently. Each one taught me something new.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div>
+            <p
+              className="text-accent dark:text-indigo-400 mb-3 text-sm"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              // selected work
+            </p>
+            <h2
+              className="text-4xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 tracking-tight"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
+              Things I've built.
+            </h2>
+          </div>
+          <div className="md:max-w-sm md:text-right">
+            <p className="text-[#6B7280] dark:text-zinc-400 leading-relaxed">
+              A small collection of products, experiments, and lessons turned into interfaces.
+            </p>
+            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-accent dark:text-indigo-400" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+              {String(projectsList.length).padStart(2, "0")} projects / and counting
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {projectsList.map((project, i) => (
             <div
               key={project.id}

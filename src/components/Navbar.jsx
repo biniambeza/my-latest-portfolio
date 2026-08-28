@@ -42,7 +42,7 @@ export default function Navbar() {
       <div className="w-full px-6 py-3.5 flex items-center">
         {/* Logo */}
         <a href="#hero" className="group flex items-center gap-2.5">
-          <span className="w-9 h-9 rounded-xl bg-[#4F46E5] flex items-center justify-center text-white font-bold text-sm shadow-md shadow-indigo-500/25 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
+          <span className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center text-white font-bold text-sm shadow-md shadow-indigo-500/25 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
             B
           </span>
           <span
@@ -62,7 +62,7 @@ export default function Navbar() {
                 className="group relative text-[13px] font-semibold uppercase tracking-wider text-[#4B5060] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-100 transition-colors py-2"
               >
                 {link.name}
-                <span className="absolute left-0 -bottom-0.5 h-0.5 w-full origin-left scale-x-0 rounded-full bg-[#4F46E5] transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span className="absolute left-0 -bottom-0.5 h-0.5 w-full origin-left scale-x-0 rounded-full bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </a>
             </li>
           ))}
@@ -95,7 +95,7 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-[#4F46E5] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:bg-[#4338CA] hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center gap-1.5 bg-accent text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:bg-accent-purple hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0"
           >
             Resume
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -171,7 +171,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="group flex items-center gap-3 py-2.5 text-[15px] font-semibold text-[#3F4452] dark:text-zinc-300 hover:text-[#12141C] dark:hover:text-zinc-100"
               >
-                <span className="h-0.5 w-3 rounded-full bg-[#4F46E5] transition-all duration-300 group-hover:w-6" />
+                <span className="h-0.5 w-3 rounded-full bg-accent transition-all duration-300 group-hover:w-6" />
                 {link.name}
               </a>
             </li>
@@ -182,7 +182,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="inline-flex items-center justify-center gap-1.5 w-full bg-[#4F46E5] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md shadow-indigo-500/25"
+              className="inline-flex items-center justify-center gap-1.5 w-full bg-accent text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md shadow-indigo-500/25"
             >
               Resume
             </a>
