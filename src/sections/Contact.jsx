@@ -73,19 +73,6 @@ export default function Contact() {
       id="contact"
       className="relative min-h-screen scroll-mt-20 py-16 md:py-24 px-4 sm:px-6 bg-[#E5E7EB] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
-      {/* subject-appropriate texture: a faint dot grid, not a gradient blob */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-[0.25]"
-        style={{
-          backgroundImage:
-            "radial-gradient(currentColor 1px, transparent 1px)",
-          backgroundSize: "22px 22px",
-          color: "#9CA3AF",
-          maskImage:
-            "radial-gradient(ellipse 60% 60% at 30% 40%, black, transparent)",
-        }}
-      />
-
       <div className="relative max-w-6xl w-full mx-auto">
         <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-20 items-center">
           {/* Left: thesis */}
