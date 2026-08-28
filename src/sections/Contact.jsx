@@ -22,40 +22,32 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-28 px-6 bg-[#12141C] overflow-hidden text-center"
+      className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden text-center"
     >
-      {/* Ambient gradient glow, echoes the light-section blobs but brighter against dark */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.18] blur-3xl" />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      {/* Ambient background glow blob */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.08] dark:opacity-[0.16] blur-3xl" />
 
       <div className="relative max-w-2xl mx-auto">
         <p
-          className="text-[#93C5FD] mb-3 text-sm"
+          className="text-[#4F46E5] dark:text-indigo-400 mb-3 text-sm"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           // get in touch
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight"
+          className="text-3xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 mb-5 tracking-tight"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           Let's Talk
         </h2>
-        <p className="text-white/60 mb-10 leading-relaxed max-w-md mx-auto">
+        <p className="text-[#6B7280] dark:text-zinc-400 mb-10 leading-relaxed max-w-md mx-auto">
           Have a project in mind or just want to say hi? My inbox is always open.
         </p>
 
         <div className="flex flex-col items-center gap-5">
           <a
             href={`mailto:${email}`}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-indigo-500/30 transition-all duration-300 hover:shadow-indigo-500/50 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
           >
             Say Hello
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -63,15 +55,15 @@ export default function Contact() {
             </svg>
           </a>
 
-          {/* Terminal-style email row, click to copy */}
+          {/* Terminal-style email row */}
           <button
             onClick={handleCopy}
-            className="group inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
+            className="group inline-flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            <span className="text-[#4F46E5]">$</span>
+            <span className="text-[#4F46E5] dark:text-indigo-400">$</span>
             {email}
-            <span className="text-white/30 group-hover:text-white/60 transition-colors">
+            <span className="text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300 transition-colors">
               {copied ? "copied ✓" : "copy"}
             </span>
           </button>

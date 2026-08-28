@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useDarkMode from "../useDarkMode"; // Adjust path if located in src/hooks/
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -11,9 +12,10 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, toggleTheme] = useDarkMode();
 
   useEffect(() => {
-    // Pull in a display face for the wordmark/logo so it doesn't read as system-default
+    // Pull in a display face for the wordmark/logo
     const link = document.createElement("link");
     link.href =
       "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap";
@@ -33,8 +35,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-md border-b border-black/[0.06] shadow-[0_4px_20px_-8px_rgba(17,24,39,0.15)]"
-          : "bg-white/40 backdrop-blur-sm border-b border-transparent"
+          ? "bg-white/85 dark:bg-[#09090B]/85 backdrop-blur-md border-b border-black/[0.06] dark:border-zinc-800/80 shadow-[0_4px_20px_-8px_rgba(17,24,39,0.15)]"
+          : "bg-white/40 dark:bg-[#09090B]/40 backdrop-blur-sm border-b border-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-3.5 flex justify-between items-center">
@@ -44,10 +46,10 @@ export default function Navbar() {
             B
           </span>
           <span
-            className="text-lg font-bold tracking-tight text-[#12141C]"
+            className="text-lg font-bold tracking-tight text-[#12141C] dark:text-zinc-100 transition-colors"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Biniam<span className="text-[#4F46E5]">.</span>
+            Biniam<span className="text-[#4F46E5] dark:text-indigo-400">.</span>
           </span>
         </a>
 
@@ -57,7 +59,7 @@ export default function Navbar() {
             <li key={link.name} className="relative">
               <a
                 href={link.href}
-                className="group relative text-[13px] font-semibold uppercase tracking-wider text-[#4B5060] hover:text-[#12141C] transition-colors py-2"
+                className="group relative text-[13px] font-semibold uppercase tracking-wider text-[#4B5060] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-100 transition-colors py-2"
               >
                 {link.name}
                 <span className="absolute left-0 -bottom-0.5 h-[2px] w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -66,41 +68,85 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Resume CTA */}
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center gap-1.5 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0"
-        >
-          Resume
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M7 17L17 7M17 7H8M17 7V16" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+        {/* Action Controls (Theme Toggle + Resume CTA) */}
+        <div className="hidden md:flex items-center gap-4">
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors focus:outline-none"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? (
+              // Sun Icon
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+              </svg>
+            ) : (
+              // Moon Icon
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            )}
+          </button>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden relative w-9 h-9 flex items-center justify-center text-[#12141C]"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path
-              d="M4 6h16"
-              className={`origin-center transition-transform duration-300 ${isOpen ? "translate-y-[6px] rotate-45" : ""}`}
-            />
-            <path
-              d="M4 12h16"
-              className={`transition-opacity duration-200 ${isOpen ? "opacity-0" : "opacity-100"}`}
-            />
-            <path
-              d="M4 18h16"
-              className={`origin-center transition-transform duration-300 ${isOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
-            />
-          </svg>
-        </button>
+          {/* Resume CTA */}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            Resume
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M7 17L17 7M17 7H8M17 7V16" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Mobile controls wrapper */}
+        <div className="flex items-center gap-2 md:hidden">
+          {/* Mobile Dark Mode Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            )}
+          </button>
+
+          {/* Mobile Hamburger toggle */}
+          <button
+            className="relative w-9 h-9 flex items-center justify-center text-[#12141C] dark:text-zinc-200"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path
+                d="M4 6h16"
+                className={`origin-center transition-transform duration-300 ${isOpen ? "translate-y-[6px] rotate-45" : ""}`}
+              />
+              <path
+                d="M4 12h16"
+                className={`transition-opacity duration-200 ${isOpen ? "opacity-0" : "opacity-100"}`}
+              />
+              <path
+                d="M4 18h16"
+                className={`origin-center transition-transform duration-300 ${isOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile panel */}
@@ -109,7 +155,7 @@ export default function Navbar() {
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="flex flex-col gap-1 px-6 pb-5 pt-1 bg-white/90 backdrop-blur-md border-t border-black/[0.06]">
+        <ul className="flex flex-col gap-1 px-6 pb-5 pt-1 bg-white/90 dark:bg-[#09090B]/90 backdrop-blur-md border-t border-black/[0.06] dark:border-zinc-800/80">
           {navLinks.map((link, i) => (
             <li
               key={link.name}
@@ -123,7 +169,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="group flex items-center gap-3 py-2.5 text-[15px] font-semibold text-[#3F4452]"
+                className="group flex items-center gap-3 py-2.5 text-[15px] font-semibold text-[#3F4452] dark:text-zinc-300 hover:text-[#12141C] dark:hover:text-zinc-100"
               >
                 <span className="h-[2px] w-3 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] transition-all duration-300 group-hover:w-6" />
                 {link.name}

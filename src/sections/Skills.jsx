@@ -104,7 +104,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative py-28 px-6 max-w-5xl mx-auto text-center bg-white overflow-hidden"
+      className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden"
     >
       <style>{`
         @keyframes float-badge {
@@ -117,27 +117,19 @@ export default function Skills() {
         }
       `}</style>
 
-      {/* Ambient blobs, ties back to hero/about */}
-      <div className="pointer-events-none absolute -top-10 -left-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-16 -right-10 w-80 h-80 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.06] blur-3xl" />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#12141C 1px, transparent 1px), linear-gradient(90deg, #12141C 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      {/* Ambient background glow blobs */}
+      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 w-80 h-80 rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-16 -right-10 w-80 h-80 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
 
-      <div className="relative">
+      <div className="relative max-w-5xl mx-auto text-center">
         <p
-          className="text-[#4F46E5] mb-3 text-sm"
+          className="text-[#4F46E5] dark:text-indigo-400 mb-3 text-sm"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           // what i know
         </p>
         <h2
-          className="text-3xl md:text-4xl font-bold text-[#12141C] mb-14 tracking-tight"
+          className="text-3xl md:text-4xl font-bold text-[#12141C] dark:text-zinc-100 mb-14 tracking-tight"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           Skills
@@ -147,19 +139,19 @@ export default function Skills() {
           {skills.map((skill, i) => (
             <div
               key={skill}
-              className="group relative bg-white border border-black/[0.07] rounded-2xl px-4 py-7 flex flex-col items-center gap-4 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/15 hover:border-transparent"
+              className="group relative bg-white dark:bg-zinc-900/60 border border-black/[0.07] dark:border-zinc-800 rounded-2xl px-4 py-7 flex flex-col items-center gap-4 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/15 dark:hover:shadow-indigo-500/10 hover:border-transparent dark:hover:border-transparent"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "scale(1) translateY(0)" : "scale(0.92) translateY(14px)",
                 transition: `opacity 0.5s ease-out ${i * 70}ms, transform 0.5s ease-out ${i * 70}ms`,
               }}
             >
-              {/* gradient ring on hover */}
-              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:linear-gradient(white,white)_padding-box,linear-gradient(135deg,#4F46E5,#7C3AED)_border-box] border-2 border-transparent" />
+              {/* Hover gradient borders */}
+              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:linear-gradient(white,white)_padding-box,linear-gradient(135deg,#4F46E5,#7C3AED)_border-box] border-2 border-transparent dark:hidden" />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:linear-gradient(#18181b,#18181b)_padding-box,linear-gradient(135deg,#4F46E5,#7C3AED)_border-box] border-2 border-transparent hidden dark:block" />
 
-              {/* icon badge */}
+              {/* Icon badge */}
               <div className="relative">
-                {/* spinning conic ring, appears on hover only */}
                 <span
                   className="pointer-events-none absolute -inset-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
@@ -188,7 +180,7 @@ export default function Skills() {
                 </div>
               </div>
 
-              <span className="relative text-sm font-semibold text-[#3F4452] group-hover:text-[#12141C] transition-colors">
+              <span className="relative text-sm font-semibold text-[#3F4452] dark:text-zinc-300 group-hover:text-[#12141C] dark:group-hover:text-white transition-colors">
                 {skill}
               </span>
             </div>

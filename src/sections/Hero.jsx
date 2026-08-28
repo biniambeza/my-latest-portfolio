@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-[#F7F8FA]"
+      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-[#F7F8FA] dark:bg-[#09090B] text-[#12141C] dark:text-zinc-100 transition-colors duration-300"
     >
       <style>{`
         @keyframes drift-a {
@@ -42,43 +42,54 @@ export default function Hero() {
         .fade-up-5 { animation: fade-up 0.6s ease-out 0.4s both; }
       `}</style>
 
-      {/* Ambient gradient blobs — soft, slow drift */}
+      {/* Ambient gradient blobs */}
       <div
-        className="pointer-events-none absolute -top-24 -left-24 w-[26rem] h-[26rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.14] blur-3xl"
+        className="pointer-events-none absolute -top-24 -left-24 w-[26rem] h-[26rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.14] dark:opacity-[0.12] blur-3xl"
         style={{ animation: "drift-a 14s ease-in-out infinite" }}
       />
       <div
-        className="pointer-events-none absolute -bottom-32 -right-16 w-[30rem] h-[30rem] rounded-full bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.12] blur-3xl"
+        className="pointer-events-none absolute -bottom-32 -right-16 w-[30rem] h-[30rem] rounded-full bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.12] dark:opacity-[0.10] blur-3xl"
         style={{ animation: "drift-b 16s ease-in-out infinite" }}
       />
 
-      {/* Faint grid texture for a "workspace" feel */}
+      {/* Faint grid texture (Dark overlay in dark mode, light overlay in light mode) */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        className="pointer-events-none absolute inset-0 opacity-[0.035] dark:hidden"
         style={{
           backgroundImage:
             "linear-gradient(#12141C 1px, transparent 1px), linear-gradient(90deg, #12141C 1px, transparent 1px)",
           backgroundSize: "56px 56px",
         }}
       />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.05] hidden dark:block"
+        style={{
+          backgroundImage:
+            "linear-gradient(#FFFFFF 1px, transparent 1px), linear-gradient(90deg, #FFFFFF 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
 
       <div className="relative z-10 flex flex-col items-center">
+        {/* Code pill badge */}
         <p
-          className="fade-up-1 text-[#4F46E5] mb-5 text-sm px-4 py-1.5 rounded-full bg-[#4F46E5]/[0.07] border border-[#4F46E5]/20"
+          className="fade-up-1 text-[#4F46E5] dark:text-indigo-400 mb-5 text-sm px-4 py-1.5 rounded-full bg-[#4F46E5]/[0.07] dark:bg-indigo-500/10 border border-[#4F46E5]/20 dark:border-indigo-500/20"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          console.log(<span className="text-[#7C3AED]">"hi, my name is"</span>)
+          console.log(<span className="text-[#7C3AED] dark:text-purple-400">"hi, my name is"</span>)
         </p>
 
+        {/* Main Name */}
         <h1
-          className="fade-up-2 text-4xl md:text-6xl font-bold text-[#12141C] mb-3 tracking-tight"
+          className="fade-up-2 text-4xl md:text-6xl font-bold text-[#12141C] dark:text-zinc-100 mb-3 tracking-tight"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           Biniam Beza
         </h1>
 
+        {/* Subtitle */}
         <h2
-          className="fade-up-3 text-xl md:text-2xl font-semibold text-[#3F4452] mb-6 flex items-center gap-1"
+          className="fade-up-3 text-xl md:text-2xl font-semibold text-[#3F4452] dark:text-zinc-300 mb-6 flex items-center gap-1"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           I build things for the web.
@@ -88,20 +99,22 @@ export default function Hero() {
           />
         </h2>
 
-        <p className="fade-up-4 max-w-xl text-[#6B7280] mb-9 leading-relaxed">
+        {/* Description Paragraph */}
+        <p className="fade-up-4 max-w-xl text-[#6B7280] dark:text-zinc-400 mb-9 leading-relaxed">
           A passionate developer focused on creating clean, functional, and user-friendly digital experiences.
         </p>
 
+        {/* Action Buttons */}
         <div className="fade-up-5 flex flex-col sm:flex-row gap-4">
           <a
             href="#projects"
-            className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
           >
             View My Work
           </a>
           <a
             href="#contact"
-            className="border border-[#12141C]/15 text-[#3F4452] px-7 py-3 rounded-full font-semibold transition-all duration-300 hover:border-[#4F46E5]/50 hover:text-[#4F46E5] hover:-translate-y-0.5"
+            className="border border-[#12141C]/15 dark:border-zinc-800 dark:bg-zinc-900/50 text-[#3F4452] dark:text-zinc-300 px-7 py-3 rounded-full font-semibold transition-all duration-300 hover:border-[#4F46E5]/50 hover:text-[#4F46E5] dark:hover:border-indigo-500/50 dark:hover:text-white hover:-translate-y-0.5"
           >
             Contact Me
           </a>
@@ -109,9 +122,9 @@ export default function Hero() {
       </div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 dark:opacity-50">
         <span
-          className="text-[10px] uppercase tracking-[0.2em] text-[#6B7280]"
+          className="text-[10px] uppercase tracking-[0.2em] text-[#6B7280] dark:text-zinc-500"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           scroll
@@ -123,7 +136,7 @@ export default function Hero() {
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
-          className="text-[#6B7280] animate-bounce"
+          className="text-[#6B7280] dark:text-zinc-500 animate-bounce"
         >
           <rect x="1" y="1" width="14" height="22" rx="7" />
           <circle cx="8" cy="7" r="1.5" fill="currentColor" stroke="none" />
