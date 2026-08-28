@@ -1,64 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import { FaCss3Alt, FaFigma, FaGitAlt, FaHtml5, FaJsSquare, FaNodeJs, FaReact } from "react-icons/fa";
+import { SiTailwindcss } from "react-icons/si";
 
 const icons = {
-  React: (
-    <>
-      <circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none" />
-      <ellipse cx="12" cy="12" rx="8" ry="3.2" />
-      <ellipse cx="12" cy="12" rx="8" ry="3.2" transform="rotate(60 12 12)" />
-      <ellipse cx="12" cy="12" rx="8" ry="3.2" transform="rotate(120 12 12)" />
-    </>
-  ),
-  JavaScript: (
-    <path
-      d="M9 4c-1.7 0-2.5.9-2.5 2.4v2.3c0 1.3-.5 1.8-1.5 1.8v3c1 0 1.5.5 1.5 1.8v2.3C6.5 19.1 7.3 20 9 20M15 4c1.7 0 2.5.9 2.5 2.4v2.3c0 1.3.5 1.8 1.5 1.8v3c-1 0-1.5.5-1.5 1.8v2.3c0 1.5-.8 2.4-2.5 2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  "Tailwind CSS": (
-    <path
-      d="M6 12c.8-3 2.5-4.5 5-4.5 2.5 0 4 1.5 5 3-1 0-2-.5-3-.5-2 0-3 1-3.5 2.5m-3.5-.5c.8 3 2.5 4.5 5 4.5 2.5 0 4-1.5 5-3-1 0-2 .5-3 .5-2 0-3-1-3.5-2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  HTML5: (
-    <path
-      d="M9 8l-3 4 3 4M15 8l3 4-3 4M13 6l-2 12"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  CSS3: (
-    <path
-      d="M5 4l1.2 14L12 20l5.8-2L19 4H5zM8 8h8l-.3 3H8.5M8.5 11l.3 3.2L12 15l3.2-.8.3-2.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  "Git & GitHub": (
-    <>
-      <circle cx="7" cy="6" r="2" />
-      <circle cx="7" cy="18" r="2" />
-      <circle cx="17" cy="12" r="2" />
-      <path d="M7 8v8M9 6h4a4 4 0 014 4v0" strokeLinecap="round" />
-    </>
-  ),
-  "Node.js": (
-    <path
-      d="M12 3l7 4v10l-7 4-7-4V7l7-4z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  ),
-  Figma: (
-    <>
-      <path d="M9 3h4a3 3 0 010 6H9V3z" />
-      <path d="M9 9h4a3 3 0 010 6H9V9z" />
-      <path d="M9 15a3 3 0 106 0v-.5a3 3 0 00-3-3" />
-    </>
-  ),
+  React: FaReact,
+  JavaScript: FaJsSquare,
+  "Tailwind CSS": SiTailwindcss,
+  HTML5: FaHtml5,
+  CSS3: FaCss3Alt,
+  "Git & GitHub": FaGitAlt,
+  "Node.js": FaNodeJs,
+  Figma: FaFigma,
 };
 
 const skills = [
@@ -170,16 +122,10 @@ export default function Skills() {
                     animationDelay: `${i * 0.15}s`,
                   }}
                 >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  >
-                    {icons[skill.name]}
-                  </svg>
+                  {(() => {
+                    const Icon = icons[skill.name];
+                    return <Icon size={30} aria-label={`${skill.name} icon`} />;
+                  })()}
                 </div>
               </div>
 
