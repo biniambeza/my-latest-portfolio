@@ -18,12 +18,12 @@ export default function Certificates() {
       className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden"
     >
       {/* Ambient background glow blob */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[34rem] h-[20rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.05] dark:opacity-[0.10] blur-3xl" />
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-136 h-80 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.05] dark:opacity-[0.10] blur-3xl" />
 
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p
-            className="text-[#4F46E5] dark:text-indigo-400 mb-3 text-sm"
+            className="text-accent dark:text-indigo-400 mb-3 text-sm"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
             // achievements

@@ -118,12 +118,12 @@ export default function Skills() {
       `}</style>
 
       {/* Ambient background glow blobs */}
-      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 w-80 h-80 rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-16 -right-10 w-80 h-80 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
+      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 w-80 h-80 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-16 -right-10 w-80 h-80 rounded-full bg-linear-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
 
       <div className="relative max-w-5xl mx-auto text-center">
         <p
-          className="text-[#4F46E5] dark:text-indigo-400 mb-3 text-sm"
+          className="text-accent dark:text-indigo-400 mb-3 text-sm"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           // what i know
@@ -161,7 +161,7 @@ export default function Skills() {
                   }}
                 />
                 <div
-                  className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] flex items-center justify-center shadow-md shadow-indigo-500/25 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+                  className="relative w-14 h-14 rounded-2xl bg-linear-to-br from-[#4F46E5] to-[#7C3AED] flex items-center justify-center shadow-md shadow-indigo-500/25 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                   style={{
                     animation: `float-badge ${3 + (i % 3) * 0.4}s ease-in-out infinite`,
                     animationDelay: `${i * 0.15}s`,

@@ -1,78 +1,35 @@
-export default function CertificateCard({ certificate }) {
-  const { title, issuer, date, image, link } = certificate;
-
-  const initials = (title || "?")
-    .split(" ")
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
-
-  const CardInner = (
-    <div className="group relative h-full flex flex-col bg-white dark:bg-zinc-900/60 rounded-2xl border border-black/[0.06] dark:border-zinc-800 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 hover:border-transparent dark:hover:border-transparent">
-      {/* gradient ring on hover (Light Mode) */}
-      <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:linear-gradient(white,white)_padding-box,linear-gradient(135deg,#4F46E5,#7C3AED)_border-box] border-2 border-transparent dark:hidden" />
-
-      {/* gradient ring on hover (Dark Mode) */}
-      <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:linear-gradient(#18181b,#18181b)_padding-box,linear-gradient(135deg,#4F46E5,#7C3AED)_border-box] border-2 border-transparent hidden dark:block" />
-
-      <div className="relative flex flex-col h-full">
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="w-12 h-12 rounded-xl object-cover mb-4 border border-black/[0.06] dark:border-zinc-700"
-          />
-        ) : (
-          <div
-            className="w-12 h-12 rounded-xl mb-4 flex items-center justify-center text-white text-sm font-bold bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] shadow-sm shadow-indigo-500/20"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            {initials}
-          </div>
-        )}
-
-        <h3
-          className="text-[15px] font-bold text-[#12141C] dark:text-zinc-100 mb-1 leading-snug transition-colors"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-        >
-          {title}
-        </h3>
-        <p className="text-sm text-[#6B7280] dark:text-zinc-400 mb-1 transition-colors">{issuer}</p>
-        {date && (
+export default function Footer() {
+  return (
+    <footer className="bg-[#12141C] border-t border-white/[0.06] px-6 py-7">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <span className="w-5 h-5 rounded-md bg-linear-to-br from-[#4F46E5] to-[#7C3AED]" />
           <p
-            className="text-xs text-[#9CA3AF] dark:text-zinc-500 mb-4 transition-colors"
+            className="text-white/40 text-sm"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            {date}
+            © {new Date().getFullYear()} Biniam Beza - built with React &amp; Tailwind
           </p>
-        )}
+        </div>
 
-        {link && (
-          <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-[#4F46E5] dark:text-indigo-400 group-hover:text-[#7C3AED] dark:group-hover:text-indigo-300 transition-colors">
-            View credential
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            >
-              <path d="M7 17L17 7M17 7H8M17 7V16" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-        )}
+        <a
+          href="#hero"
+          className="group inline-flex items-center gap-1.5 text-sm font-medium text-white/40 hover:text-white/80 transition-colors"
+        >
+          Back to top
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            className="transition-transform duration-300 group-hover:-translate-y-0.5"
+          >
+            <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
       </div>
-    </div>
-  );
-
-  return link ? (
-    <a href={link} target="_blank" rel="noopener noreferrer" className="block h-full">
-      {CardInner}
-    </a>
-  ) : (
-    CardInner
+    </footer>
   );
 }

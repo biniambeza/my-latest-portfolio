@@ -18,13 +18,13 @@ export default function About() {
       className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden"
     >
       {/* Subtle ambient blob */}
-      <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 w-[24rem] h-[24rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.08] blur-3xl" />
+      <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 w-[24rem] h-96 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.08] blur-3xl" />
 
       <div className="relative max-w-5xl mx-auto grid md:grid-cols-2 gap-14 items-center">
         {/* Left — copy */}
         <div className="text-left">
           <p
-            className="text-[#4F46E5] dark:text-indigo-400 mb-3 text-sm"
+            className="text-accent dark:text-indigo-400 mb-3 text-sm"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
             // about
@@ -50,7 +50,7 @@ export default function About() {
             {focus.map((item) => (
               <li
                 key={item}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full text-[#4F46E5] dark:text-indigo-300 bg-[#4F46E5]/[0.07] dark:bg-zinc-900 dark:border-zinc-800 border border-[#4F46E5]/15"
+                className="text-xs font-semibold px-3 py-1.5 rounded-full text-accent dark:text-indigo-300 bg-accent/[0.07] dark:bg-zinc-900 dark:border-zinc-800 border border-accent/15"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 {item}
@@ -63,7 +63,7 @@ export default function About() {
         <div className="relative">
           <div className="rounded-2xl bg-[#12141C] dark:bg-black shadow-2xl shadow-black/50 overflow-hidden border border-white/5 dark:border-zinc-800">
             {/* window chrome */}
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5 dark:border-zinc-800/80 bg-white/[0.02]">
+            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5 dark:border-zinc-800/80 bg-white/2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
               <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
               <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
@@ -110,7 +110,7 @@ export default function About() {
           </div>
 
           {/* subtle accent glow beneath the card */}
-          <div className="pointer-events-none absolute -z-10 -bottom-6 -left-6 w-40 h-40 rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-20 dark:opacity-20 blur-3xl" />
+          <div className="pointer-events-none absolute -z-10 -bottom-6 -left-6 w-40 h-40 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-20 dark:opacity-20 blur-3xl" />
         </div>
       </div>
     </section>

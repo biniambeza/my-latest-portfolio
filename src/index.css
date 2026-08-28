@@ -1,32 +1,31 @@
 @import "tailwindcss";
 
-/* 1. Enable class-based dark mode in Tailwind v4 */
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* 2. Define theme variables */
 @theme {
-  --color-bglight: #EAEFEF;
-  --color-bgcard: #ffffff;
-  --color-accent: #2563eb;
-  --color-textmain: #12141C;
+  --color-accent: #4f46e5;
+  --color-accent-purple: #7c3aed;
 }
 
-/* 3. Base styles using custom properties */
 :root {
-  --bg-main: var(--color-bglight);
-  --bg-card: var(--color-bgcard);
-  --text-main: var(--color-textmain);
+  --bg-main: #ffffff;
+  --bg-card: #ffffff;
+  --text-main: #12141c;
 }
 
-/* 4. Dark mode overrides */
 .dark {
-  --bg-main: #0B0F17;
-  --bg-card: #161B26;
-  --text-main: #F3F4F6;
+  --bg-main: #09090b;
+  --bg-card: #18181b;
+  --text-main: #f4f4f5;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg-main);
   color: var(--text-main);
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }

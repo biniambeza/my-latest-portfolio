@@ -25,11 +25,11 @@ export default function Contact() {
       className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden text-center"
     >
       {/* Ambient background glow blob */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.08] dark:opacity-[0.16] blur-3xl" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-xl h-144 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.08] dark:opacity-[0.16] blur-3xl" />
 
       <div className="relative max-w-2xl mx-auto">
         <p
-          className="text-[#4F46E5] dark:text-indigo-400 mb-3 text-sm"
+          className="text-accent dark:text-indigo-400 mb-3 text-sm"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           // get in touch
@@ -47,7 +47,7 @@ export default function Contact() {
         <div className="flex flex-col items-center gap-5">
           <a
             href={`mailto:${email}`}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-linear-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
           >
             Say Hello
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -61,7 +61,7 @@ export default function Contact() {
             className="group inline-flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            <span className="text-[#4F46E5] dark:text-indigo-400">$</span>
+            <span className="text-accent dark:text-indigo-400">$</span>
             {email}
             <span className="text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300 transition-colors">
               {copied ? "copied ✓" : "copy"}

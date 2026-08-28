@@ -2,7 +2,7 @@ export default function Card({ project }) {
   const { title, description, image, tags, demo, github } = project;
 
   return (
-    <div className="group flex flex-col h-full bg-white dark:bg-zinc-900/60 rounded-2xl border border-black/[0.06] dark:border-zinc-800 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 dark:hover:border-zinc-700">
+    <div className="group flex flex-col h-full bg-white dark:bg-zinc-900/60 rounded-2xl border border-black/6 dark:border-zinc-800 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 dark:hover:border-zinc-700">
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-[#12141C] dark:bg-zinc-950">
         {image ? (
@@ -12,7 +12,7 @@ export default function Card({ project }) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#4F46E5] to-[#7C3AED]">
+          <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-[#4F46E5] to-[#7C3AED]">
             <span
               className="text-white/90 text-lg font-bold tracking-tight"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -21,7 +21,7 @@ export default function Card({ project }) {
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Body */}
@@ -41,7 +41,7 @@ export default function Card({ project }) {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] font-semibold px-2.5 py-1 rounded-full text-[#4F46E5] dark:text-indigo-400 bg-[#4F46E5]/[0.07] dark:bg-indigo-500/10 border border-[#4F46E5]/15 dark:border-indigo-500/20"
+                className="text-[11px] font-semibold px-2.5 py-1 rounded-full text-accent dark:text-indigo-400 bg-accent/[0.07] dark:bg-indigo-500/10 border border-accent/15 dark:border-indigo-500/20"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 {tag}
@@ -50,13 +50,13 @@ export default function Card({ project }) {
           </div>
         )}
 
-        <div className="flex items-center gap-4 pt-4 border-t border-black/[0.06] dark:border-zinc-800 transition-colors">
+        <div className="flex items-center gap-4 pt-4 border-t border-black/6 dark:border-zinc-800 transition-colors">
           {demo && (
             <a
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#4F46E5] dark:text-indigo-400 hover:text-[#7C3AED] dark:hover:text-indigo-300 transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent dark:text-indigo-400 hover:text-accent-purple dark:hover:text-indigo-300 transition-colors"
             >
               Live Demo
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

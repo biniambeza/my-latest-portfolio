@@ -44,11 +44,11 @@ export default function Hero() {
 
       {/* Ambient gradient blobs */}
       <div
-        className="pointer-events-none absolute -top-24 -left-24 w-[26rem] h-[26rem] rounded-full bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.14] dark:opacity-[0.12] blur-3xl"
+        className="pointer-events-none absolute -top-24 -left-24 w-104 h-104 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.14] dark:opacity-[0.12] blur-3xl"
         style={{ animation: "drift-a 14s ease-in-out infinite" }}
       />
       <div
-        className="pointer-events-none absolute -bottom-32 -right-16 w-[30rem] h-[30rem] rounded-full bg-gradient-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.12] dark:opacity-[0.10] blur-3xl"
+        className="pointer-events-none absolute -bottom-32 -right-16 w-120 h-120 rounded-full bg-linear-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.12] dark:opacity-[0.10] blur-3xl"
         style={{ animation: "drift-b 16s ease-in-out infinite" }}
       />
 
@@ -73,10 +73,10 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center">
         {/* Code pill badge */}
         <p
-          className="fade-up-1 text-[#4F46E5] dark:text-indigo-400 mb-5 text-sm px-4 py-1.5 rounded-full bg-[#4F46E5]/[0.07] dark:bg-indigo-500/10 border border-[#4F46E5]/20 dark:border-indigo-500/20"
+          className="fade-up-1 text-accent dark:text-indigo-400 mb-5 text-sm px-4 py-1.5 rounded-full bg-accent/[0.07] dark:bg-indigo-500/10 border border-accent/20 dark:border-indigo-500/20"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          console.log(<span className="text-[#7C3AED] dark:text-purple-400">"hi, my name is"</span>)
+          console.log(<span className="text-accent-purple dark:text-purple-400">"hi, my name is"</span>)
         </p>
 
         {/* Main Name */}
@@ -94,7 +94,7 @@ export default function Hero() {
         >
           I build things for the web.
           <span
-            className="inline-block w-[3px] h-6 md:h-7 bg-gradient-to-b from-[#4F46E5] to-[#7C3AED] ml-1"
+            className="inline-block w-0.75 h-6 md:h-7 bg-linear-to-b from-[#4F46E5] to-[#7C3AED] ml-1"
             style={{ opacity: cursorOn ? 1 : 0 }}
           />
         </h2>
@@ -108,13 +108,13 @@ export default function Hero() {
         <div className="fade-up-5 flex flex-col sm:flex-row gap-4">
           <a
             href="#projects"
-            className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            className="bg-linear-to-r from-[#4F46E5] to-[#7C3AED] text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
           >
             View My Work
           </a>
           <a
             href="#contact"
-            className="border border-[#12141C]/15 dark:border-zinc-800 dark:bg-zinc-900/50 text-[#3F4452] dark:text-zinc-300 px-7 py-3 rounded-full font-semibold transition-all duration-300 hover:border-[#4F46E5]/50 hover:text-[#4F46E5] dark:hover:border-indigo-500/50 dark:hover:text-white hover:-translate-y-0.5"
+            className="border border-[#12141C]/15 dark:border-zinc-800 dark:bg-zinc-900/50 text-[#3F4452] dark:text-zinc-300 px-7 py-3 rounded-full font-semibold transition-all duration-300 hover:border-accent/50 hover:text-accent dark:hover:border-indigo-500/50 dark:hover:text-white hover:-translate-y-0.5"
           >
             Contact Me
           </a>
