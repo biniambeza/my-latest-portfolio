@@ -25,7 +25,7 @@ export default function Contact() {
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
-      "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
+      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
     return () => document.head.removeChild(link);
@@ -85,7 +85,7 @@ export default function Contact() {
             </p>
             <h2
               className="text-4xl md:text-6xl font-bold text-[#12141C] dark:text-zinc-100 mb-6 tracking-tight leading-[1.05]"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               Let's make
               <span className="block text-accent dark:text-indigo-400">

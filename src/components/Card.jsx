@@ -15,7 +15,7 @@ export default function Card({ project }) {
           <div className="w-full h-full flex items-center justify-center bg-accent">
             <span
               className="text-white/90 text-lg font-bold tracking-tight"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               {title}
             </span>
@@ -34,7 +34,7 @@ export default function Card({ project }) {
         <div className="flex items-start justify-between gap-3 mb-2">
           <h3
             className="text-lg font-bold text-[#12141C] dark:text-zinc-100 tracking-tight transition-colors"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
           >
             {title}
           </h3>

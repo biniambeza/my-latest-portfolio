@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { MapPin, Mail } from "lucide-react";
 
 export default function Hero() {
-  const [cursorOn, setCursorOn] = useState(true);
-
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
-      "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap";
+      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
 
-    const blink = setInterval(() => setCursorOn((v) => !v), 600);
     return () => {
       document.head.removeChild(link);
-      clearInterval(blink);
     };
   }, []);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-[#e5e7eb] dark:bg-[#09090B] text-[#12141C] dark:text-zinc-100 transition-colors duration-300"
+      className="relative min-h-screen flex items-center px-6 md:px-10 lg:px-16 overflow-hidden bg-[#e5e7eb] dark:bg-[#050505] text-[#12141C] dark:text-zinc-100 transition-colors duration-300"
     >
       <style>{`
         @keyframes drift-a {
@@ -42,77 +40,67 @@ export default function Hero() {
         .fade-up-5 { animation: fade-up 0.6s ease-out 0.4s both; }
       `}</style>
 
-      <div className="relative z-10 flex flex-col items-center">
-        {/* Code pill badge */}
+      <div className="relative z-10 grid w-full max-w-6xl mx-auto lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-20 items-center">
+        <div className="text-left">
         <p
-          className="fade-up-1 text-accent dark:text-indigo-400 mb-5 text-sm px-4 py-1.5 rounded-full bg-accent/[0.07] dark:bg-indigo-500/10 border border-accent/20 dark:border-indigo-500/20"
+          className="fade-up-1 inline-block text-[#1597ff] mb-7 text-xs px-3 py-1.5 bg-[#071a2e] border border-[#0d3d68]"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          console.log(<span className="text-accent-purple dark:text-purple-400">"hi, my name is"</span>)
+          Frontend Developer
         </p>
 
-        {/* Main Name */}
         <h1
-          className="fade-up-2 text-4xl md:text-6xl font-bold text-[#12141C] dark:text-zinc-100 mb-3 tracking-tight"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="fade-up-2 text-5xl sm:text-6xl lg:text-8xl font-bold text-[#12141C] dark:text-white mb-5 tracking-tight leading-[0.95]"
+          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
         >
           Biniam Beza
         </h1>
 
-        {/* Subtitle */}
         <h2
-          className="fade-up-3 text-xl md:text-2xl font-semibold text-[#3F4452] dark:text-zinc-300 mb-6 flex items-center gap-1"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          className="fade-up-3 text-xl md:text-3xl font-medium text-[#4B5060] dark:text-[#a7adb8] mb-7 max-w-2xl leading-tight"
+          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
         >
-          I build things for the web.
-          <span
-            className="inline-block w-0.75 h-6 md:h-7 bg-accent ms-1"
-            style={{ opacity: cursorOn ? 1 : 0 }}
-          />
+          Clean interfaces <span className="text-[#1597ff]">•</span> thoughtful systems <span className="text-[#1597ff]">•</span> useful products
         </h2>
 
-        {/* Description Paragraph */}
-        <p className="fade-up-4 max-w-xl text-[#6B7280] dark:text-zinc-400 mb-9 leading-relaxed">
-          A passionate developer focused on creating clean, functional, and user-friendly digital experiences.
+        <p className="fade-up-4 max-w-xl text-[#6B7280] dark:text-[#9aa1ad] mb-9 leading-relaxed">
+          I design and build responsive digital experiences with a focus on clarity, performance, and the details that make software feel effortless.
         </p>
 
-        {/* Action Buttons */}
-        <div className="fade-up-5 flex flex-col sm:flex-row gap-4">
+        <div className="fade-up-5 flex flex-col sm:flex-row gap-3">
           <a
             href="#projects"
-            className="bg-accent text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:bg-accent-purple hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            className="bg-[#1597ff] text-white px-6 py-3 font-semibold transition-colors duration-300 hover:bg-[#087bd7]"
           >
-            View My Work
+            View projects
           </a>
           <a
             href="#contact"
-            className="border border-[#12141C]/15 dark:border-zinc-800 dark:bg-zinc-900/50 text-[#3F4452] dark:text-zinc-300 px-7 py-3 rounded-full font-semibold transition-all duration-300 hover:border-accent/50 hover:text-accent dark:hover:border-indigo-500/50 dark:hover:text-white hover:-translate-y-0.5"
+            className="border border-black/15 dark:border-[#2b3038] bg-white dark:bg-[#191a1d] text-[#1597ff] px-6 py-3 font-semibold transition-colors duration-300 hover:border-[#1597ff]"
           >
-            Contact Me
+            Get in touch
           </a>
         </div>
       </div>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 dark:opacity-50">
-        <span
-          className="text-[10px] uppercase tracking-[0.2em] text-[#6B7280] dark:text-zinc-500"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          scroll
-        </span>
-        <svg
-          width="16"
-          height="24"
-          viewBox="0 0 16 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-[#6B7280] dark:text-zinc-500 animate-bounce"
-        >
-          <rect x="1" y="1" width="14" height="22" rx="7" />
-          <circle cx="8" cy="7" r="1.5" fill="currentColor" stroke="none" />
-        </svg>
+        <div className="grid gap-4">
+          <div className="grid grid-cols-2 gap-px bg-[#303238] border border-[#303238]">
+            {[['01', 'Projects delivered'], ['02', 'Core technologies'], ['03', 'Years learning'], ['04', 'Curious mind']].map(([number, label]) => (
+              <div key={number} className="bg-[#202124] px-5 py-5">
+                <p className="text-3xl font-bold text-white mb-1">{number === '01' ? '08+' : number === '02' ? '12+' : number === '03' ? '03+' : '∞'}</p>
+                <p className="text-[10px] uppercase tracking-widest text-[#8f96a3]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[#202124] border border-[#303238] p-5">
+            <div className="flex items-center gap-3 text-sm text-[#c4c8d0] mb-4"><MapPin size={16} className="text-[#1597ff]" /> Addis Ababa, Ethiopia</div>
+            <div className="flex items-center gap-3 text-sm text-[#c4c8d0] mb-5"><Mail size={16} className="text-[#1597ff]" /> {"your.email@example.com"}</div>
+            <div className="flex gap-6 text-[#1597ff]">
+              <a href="https://github.com/biniambeza" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors"><FaGithub /> GitHub</a>
+              <a href="https://www.linkedin.com/in/biniam-beza/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors"><FaLinkedinIn /> LinkedIn</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

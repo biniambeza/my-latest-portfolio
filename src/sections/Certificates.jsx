@@ -6,7 +6,7 @@ export default function Certificates() {
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
-      "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap";
+      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
     return () => document.head.removeChild(link);
@@ -28,7 +28,7 @@ export default function Certificates() {
             </p>
             <h2
               className="text-3xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 tracking-tight"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               Certificates &amp; Achievements
             </h2>

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import useDarkMode from "../useDarkmode"; // Adjust path if located in src/hooks/
 
 const navLinks = [
-  { name: "About", href: "#about" },
+  { name: "About", href: "#hero" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Certificates", href: "#certificates" },
@@ -18,7 +19,7 @@ export default function Navbar() {
     // Pull in a display face for the wordmark/logo
     const link = document.createElement("link");
     link.href =
-      "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap";
+      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
 
@@ -35,45 +36,45 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#e5e7eb] dark:bg-[#09090B] border-b border-black/6 dark:border-zinc-800/80 shadow-[0_4px_20px_-8px_rgba(17,24,39,0.15)]"
-          : "bg-[#e5e7eb] dark:bg-[#09090B] border-b border-transparent"
+          ? "bg-[#e5e7eb] dark:bg-[#050505] border-b border-black/10 dark:border-[#1d2025] shadow-[0_4px_20px_-8px_rgba(0,0,0,0.45)]"
+          : "bg-[#e5e7eb] dark:bg-[#050505] border-b border-transparent"
       }`}
     >
-      <div className="w-full px-6 py-3.5 flex items-center">
+      <div className="max-w-[1060px] mx-auto w-full px-5 py-2.5 flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="group flex items-center gap-2.5">
-          <span className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center text-white font-bold text-sm shadow-md shadow-indigo-500/25 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
-            B
+          <span className="w-8 h-8 flex items-center justify-center text-[#12141C] dark:text-white font-bold text-lg transition-transform duration-300 group-hover:scale-105">
+            BB
           </span>
           <span
-            className="text-lg font-bold tracking-tight text-[#12141C] dark:text-zinc-100 transition-colors"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            className="hidden sm:inline text-lg font-bold tracking-tight text-[#12141C] dark:text-white transition-colors"
+            style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
           >
-            Biniam<span className="text-accent dark:text-indigo-400">.</span>
+            Biniam<span className="text-[#1597ff]">.</span>
           </span>
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex flex-1 justify-evenly items-center mx-8">
+        <ul className="hidden md:flex items-center gap-8 ml-auto mr-8">
           {navLinks.map((link) => (
             <li key={link.name} className="relative">
               <a
                 href={link.href}
-                className="group relative text-[13px] font-semibold uppercase tracking-wider text-[#4B5060] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-100 transition-colors py-2"
+                className="group relative text-xs font-medium text-[#4B5060] dark:text-[#b8bcc4] hover:text-[#12141C] dark:hover:text-white transition-colors py-2"
               >
                 {link.name}
-                <span className="absolute left-0 -bottom-0.5 h-0.5 w-full origin-left scale-x-0 rounded-full bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span className="absolute left-0 -bottom-1 h-px w-full origin-left scale-x-0 bg-[#1597ff] transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </a>
             </li>
           ))}
         </ul>
 
         {/* Action Controls (Theme Toggle + Resume CTA) */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors focus:outline-none"
+            className="p-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-black/10 dark:hover:bg-[#202124] hover:text-[#12141C] dark:hover:text-white transition-colors focus:outline-none"
             aria-label="Toggle dark mode"
           >
             {theme === "dark" ? (
@@ -90,15 +91,15 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Resume CTA */}
+          {/* Resume link */}
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-accent text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:bg-accent-purple hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0"
+              className="text-xs font-medium text-[#1597ff] hover:text-[#12141C] dark:hover:text-white transition-colors"
           >
             Resume
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M7 17L17 7M17 7H8M17 7V16" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
@@ -109,7 +110,7 @@ export default function Navbar() {
           {/* Mobile Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-black/10 dark:hover:bg-[#202124] hover:text-[#12141C] dark:hover:text-white transition-colors"
             aria-label="Toggle dark mode"
           >
             {theme === "dark" ? (
@@ -126,7 +127,7 @@ export default function Navbar() {
 
           {/* Mobile Hamburger toggle */}
           <button
-            className="relative w-9 h-9 flex items-center justify-center text-[#12141C] dark:text-zinc-200"
+            className="relative w-9 h-9 flex items-center justify-center text-zinc-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
@@ -155,7 +156,7 @@ export default function Navbar() {
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="flex flex-col gap-1 px-6 pb-5 pt-1 bg-[#e5e7eb] dark:bg-[#09090B] border-t border-black/6 dark:border-zinc-800/80">
+        <ul className="flex flex-col gap-1 px-6 pb-5 pt-1 bg-[#e5e7eb] dark:bg-[#050505] border-t border-black/10 dark:border-[#1d2025]">
           {navLinks.map((link, i) => (
             <li
               key={link.name}
@@ -169,9 +170,9 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="group flex items-center gap-3 py-2.5 text-[15px] font-semibold text-[#3F4452] dark:text-zinc-300 hover:text-[#12141C] dark:hover:text-zinc-100"
+                className="group flex items-center gap-3 py-2.5 text-[15px] font-semibold text-[#4B5060] dark:text-[#9aa1ad] hover:text-[#12141C] dark:hover:text-white"
               >
-                <span className="h-0.5 w-3 rounded-full bg-accent transition-all duration-300 group-hover:w-6" />
+                <span className="h-0.5 w-3 rounded-full bg-[#1597ff] transition-all duration-300 group-hover:w-6" />
                 {link.name}
               </a>
             </li>
@@ -182,7 +183,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="inline-flex items-center justify-center gap-1.5 w-full bg-accent text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md shadow-indigo-500/25"
+              className="inline-flex items-center justify-center gap-1.5 w-full bg-[#1597ff] text-white px-5 py-2.5 text-sm font-bold"
             >
               Resume
             </a>

@@ -21,7 +21,7 @@ export default function CertificateCard({ certificate }) {
           ) : (
             <div
               className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center text-white text-sm font-bold bg-accent shadow-sm shadow-indigo-500/20"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               {initials}
             </div>
@@ -33,7 +33,7 @@ export default function CertificateCard({ certificate }) {
 
         <h3
             className="text-sm md:text-base font-bold text-[#12141C] dark:text-zinc-100 mb-2 leading-snug transition-colors"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
         >
           {title}
         </h3>

@@ -6,7 +6,7 @@ export default function Footer() {
           <span className="w-5 h-5 rounded-md bg-accent" />
           <p
             className="text-[#6B7280] dark:text-zinc-400 text-sm transition-colors duration-300"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
           >
             © {new Date().getFullYear()} Biniam Beza - built with React &amp; Tailwind
           </p>

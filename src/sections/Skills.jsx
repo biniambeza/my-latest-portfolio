@@ -31,7 +31,7 @@ export default function Skills() {
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
-      "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap";
+      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
 
@@ -59,47 +59,54 @@ export default function Skills() {
       className="relative min-h-screen scroll-mt-20 py-10 md:py-24 px-4 sm:px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
       <style>{`
-        @keyframes float-badge {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-6px); }
+        @keyframes skill-reveal {
+          from { opacity: 0; transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        @keyframes icon-pulse {
+          0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--skill-color) 0%, transparent); }
+          50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--skill-color) 14%, transparent); }
         }
-        @keyframes skill-glow {
-          0%, 100% { transform: scale(0.92); opacity: 0.35; }
-          50% { transform: scale(1.08); opacity: 0.7; }
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
         }
       `}</style>
 
-      <div className="relative max-w-5xl mx-auto text-center">
-        <p
+      <div className="relative max-w-6xl w-full mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
+          <div>
+          <p
           className="text-accent dark:text-indigo-400 mb-3 text-sm"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           // what i know
         </p>
         <h2
-          className="text-3xl md:text-4xl font-bold text-[#12141C] dark:text-zinc-100 mb-6 md:mb-8 tracking-tight"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="text-4xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 tracking-tight leading-none"
+          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
         >
           A toolkit for
           <span className="block text-accent dark:text-indigo-400">building better.</span>
         </h2>
-        <p className="max-w-xl mx-auto mb-6 md:mb-8 text-sm md:text-base text-[#4B5060] dark:text-zinc-400 leading-relaxed">
-          The tools I use to turn rough ideas into fast, accessible, and carefully finished experiences.
-        </p>
+          </div>
+          <div className="md:max-w-sm md:text-right">
+            <p className="text-[#4B5060] dark:text-zinc-400 leading-relaxed">
+              The tools I use to turn rough ideas into fast, accessible, and carefully finished experiences.
+            </p>
+            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-accent dark:text-indigo-400" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+              {String(skills.length).padStart(2, "0")} tools in rotation
+            </p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-4">
           {skills.map((skill, i) => (
             <div
               key={skill.name}
-              className="group relative bg-white dark:bg-zinc-900 border border-black/[0.07] dark:border-zinc-800 rounded-2xl px-2 py-3 md:px-3 md:py-5 flex flex-col items-center gap-2 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/15 dark:hover:shadow-indigo-500/10 hover:border-indigo-300 dark:hover:border-indigo-800"
+              className="group relative bg-white dark:bg-zinc-900 border border-black/[0.07] dark:border-zinc-800 rounded-2xl px-2 py-4 md:px-4 md:py-5 flex flex-col items-center gap-2.5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/15 dark:hover:shadow-indigo-500/10 hover:border-indigo-300 dark:hover:border-indigo-800"
               style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "scale(1) translateY(0)" : "scale(0.92) translateY(14px)",
-                transition: `opacity 0.5s ease-out ${i * 70}ms, transform 0.5s ease-out ${i * 70}ms, border-color 0.3s ease-out`,
+                opacity: visible ? undefined : 0,
+                animation: visible ? `skill-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) ${i * 75}ms both` : "none",
               }}
             >
               <span className="absolute top-4 right-4 text-[10px] font-bold text-black/25 dark:text-white/25" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
@@ -114,12 +121,13 @@ export default function Skills() {
                   }}
                 />
                 <div
-                  className="relative w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+                  className="relative w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                   style={{
                     backgroundColor: skill.color,
                     color: skill.name === "JavaScript" ? "#12141C" : "#ffffff",
-                    animation: `float-badge ${3 + (i % 3) * 0.4}s ease-in-out infinite`,
-                    animationDelay: `${i * 0.15}s`,
+                    "--skill-color": skill.color,
+                    animation: "icon-pulse 3s ease-in-out infinite",
+                    animationDelay: `${i * 180}ms`,
                   }}
                 >
                   {(() => {
