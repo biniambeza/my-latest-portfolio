@@ -22,11 +22,8 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden text-center"
+      className="relative min-h-screen scroll-mt-20 py-28 px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden text-center flex items-center justify-center"
     >
-      {/* Ambient background glow blob */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-xl h-144 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.08] dark:opacity-[0.16] blur-3xl" />
-
       <div className="relative max-w-2xl mx-auto">
         <p
           className="text-accent dark:text-indigo-400 mb-3 text-sm"
@@ -47,7 +44,7 @@ export default function Contact() {
         <div className="flex flex-col items-center gap-5">
           <a
             href={`mailto:${email}`}
-            className="inline-flex items-center gap-2 bg-linear-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-[#4F46E5] text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:bg-[#4338CA] hover:shadow-indigo-500/40 hover:-translate-y-0.5"
           >
             Say Hello
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -62,14 +62,14 @@ const icons = {
 };
 
 const skills = [
-  "React",
-  "JavaScript",
-  "Tailwind CSS",
-  "HTML5",
-  "CSS3",
-  "Git & GitHub",
-  "Node.js",
-  "Figma",
+  { name: "React", type: "Interface", description: "Dynamic UI systems", color: "#61DAFB" },
+  { name: "JavaScript", type: "Language", description: "Thoughtful interactions", color: "#F7DF1E" },
+  { name: "Tailwind CSS", type: "Styling", description: "Fast visual language", color: "#38BDF8" },
+  { name: "HTML5", type: "Structure", description: "Semantic foundations", color: "#F97316" },
+  { name: "CSS3", type: "Styling", description: "Polished responsive details", color: "#3B82F6" },
+  { name: "Git & GitHub", type: "Workflow", description: "Clean collaboration", color: "#F05032" },
+  { name: "Node.js", type: "Runtime", description: "Reliable web services", color: "#83CD29" },
+  { name: "Figma", type: "Design", description: "Ideas into direction", color: "#A259FF" },
 ];
 
 export default function Skills() {
@@ -104,7 +104,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden"
+      className="relative min-h-screen scroll-mt-20 py-28 px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
       <style>{`
         @keyframes float-badge {
@@ -115,11 +115,11 @@ export default function Skills() {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
+        @keyframes skill-glow {
+          0%, 100% { transform: scale(0.92); opacity: 0.35; }
+          50% { transform: scale(1.08); opacity: 0.7; }
+        }
       `}</style>
-
-      {/* Ambient background glow blobs */}
-      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 w-80 h-80 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-16 -right-10 w-80 h-80 rounded-full bg-linear-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
 
       <div className="relative max-w-5xl mx-auto text-center">
         <p
@@ -132,37 +132,40 @@ export default function Skills() {
           className="text-3xl md:text-4xl font-bold text-[#12141C] dark:text-zinc-100 mb-14 tracking-tight"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          Skills
+          A toolkit for
+          <span className="block text-accent dark:text-indigo-400">building better.</span>
         </h2>
+        <p className="max-w-xl mx-auto -mt-8 mb-12 text-[#4B5060] dark:text-zinc-400 leading-relaxed">
+          The tools I use to turn rough ideas into fast, accessible, and carefully finished experiences.
+        </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
           {skills.map((skill, i) => (
             <div
-              key={skill}
-              className="group relative bg-white dark:bg-zinc-900/60 border border-black/[0.07] dark:border-zinc-800 rounded-2xl px-4 py-7 flex flex-col items-center gap-4 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/15 dark:hover:shadow-indigo-500/10 hover:border-transparent dark:hover:border-transparent"
+              key={skill.name}
+              className="group relative bg-white dark:bg-zinc-900 border border-black/[0.07] dark:border-zinc-800 rounded-2xl px-4 py-6 flex flex-col items-center gap-3 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/15 dark:hover:shadow-indigo-500/10 hover:border-indigo-300 dark:hover:border-indigo-800"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "scale(1) translateY(0)" : "scale(0.92) translateY(14px)",
-                transition: `opacity 0.5s ease-out ${i * 70}ms, transform 0.5s ease-out ${i * 70}ms`,
+                transition: `opacity 0.5s ease-out ${i * 70}ms, transform 0.5s ease-out ${i * 70}ms, border-color 0.3s ease-out`,
               }}
             >
-              {/* Hover gradient borders */}
-              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:linear-gradient(white,white)_padding-box,linear-gradient(135deg,#4F46E5,#7C3AED)_border-box] border-2 border-transparent dark:hidden" />
-              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [background:linear-gradient(#18181b,#18181b)_padding-box,linear-gradient(135deg,#4F46E5,#7C3AED)_border-box] border-2 border-transparent hidden dark:block" />
-
-              {/* Icon badge */}
+              <span className="absolute top-4 right-4 text-[10px] font-bold text-black/25 dark:text-white/25" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <div className="relative">
                 <span
-                  className="pointer-events-none absolute -inset-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="pointer-events-none absolute -inset-2 rounded-2xl border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
-                    background:
-                      "conic-gradient(from 0deg, #4F46E5, #7C3AED, transparent 70%)",
-                    animation: "spin-slow 3s linear infinite",
+                    borderColor: skill.color,
+                    animation: "skill-glow 2.5s ease-in-out infinite",
                   }}
                 />
                 <div
-                  className="relative w-14 h-14 rounded-2xl bg-linear-to-br from-[#4F46E5] to-[#7C3AED] flex items-center justify-center shadow-md shadow-indigo-500/25 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+                  className="relative w-16 h-16 rounded-2xl flex items-center justify-center shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
                   style={{
+                    backgroundColor: skill.color,
+                    color: skill.name === "JavaScript" ? "#12141C" : "#ffffff",
                     animation: `float-badge ${3 + (i % 3) * 0.4}s ease-in-out infinite`,
                     animationDelay: `${i * 0.15}s`,
                   }}
@@ -172,17 +175,17 @@ export default function Skills() {
                     height="24"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="white"
+                    stroke="currentColor"
                     strokeWidth="1.6"
                   >
-                    {icons[skill]}
+                    {icons[skill.name]}
                   </svg>
                 </div>
               </div>
 
-              <span className="relative text-sm font-semibold text-[#3F4452] dark:text-zinc-300 group-hover:text-[#12141C] dark:group-hover:text-white transition-colors">
-                {skill}
-              </span>
+              <span className="relative text-sm font-bold text-[#12141C] dark:text-zinc-100 transition-colors">{skill.name}</span>
+              <span className="text-[10px] uppercase tracking-widest text-accent dark:text-indigo-400" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{skill.type}</span>
+              <span className="text-xs text-[#6B7280] dark:text-zinc-500">{skill.description}</span>
             </div>
           ))}
         </div>

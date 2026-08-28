@@ -1,11 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#12141C] border-t border-white/[0.06] px-6 py-7">
+    <footer className="border-t border-black/10 bg-[#e5e7eb] px-6 py-7 transition-colors duration-300 dark:border-zinc-800 dark:bg-[#09090B]">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="w-5 h-5 rounded-md bg-linear-to-br from-[#4F46E5] to-[#7C3AED]" />
+          <span className="w-5 h-5 rounded-md bg-[#4F46E5]" />
           <p
-            className="text-white/40 text-sm"
+            className="text-[#6B7280] dark:text-zinc-400 text-sm transition-colors duration-300"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
             © {new Date().getFullYear()} Biniam Beza - built with React &amp; Tailwind
@@ -14,7 +14,7 @@ export default function Footer() {
 
         <a
           href="#hero"
-          className="group inline-flex items-center gap-1.5 text-sm font-medium text-white/40 hover:text-white/80 transition-colors"
+          className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#6B7280] hover:text-[#4F46E5] dark:text-zinc-400 dark:hover:text-indigo-300 transition-colors"
         >
           Back to top
           <svg

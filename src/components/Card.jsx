@@ -2,7 +2,7 @@ export default function Card({ project }) {
   const { title, description, image, tags, demo, github } = project;
 
   return (
-    <div className="group flex flex-col h-full bg-white dark:bg-zinc-900/60 rounded-2xl border border-black/6 dark:border-zinc-800 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 dark:hover:border-zinc-700">
+    <div className="group flex flex-col h-full bg-white dark:bg-zinc-900 rounded-2xl border border-black/6 dark:border-zinc-800 overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 dark:hover:border-zinc-700">
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-[#12141C] dark:bg-zinc-950">
         {image ? (
@@ -12,7 +12,7 @@ export default function Card({ project }) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-[#4F46E5] to-[#7C3AED]">
+          <div className="w-full h-full flex items-center justify-center bg-[#4F46E5]">
             <span
               className="text-white/90 text-lg font-bold tracking-tight"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -21,7 +21,6 @@ export default function Card({ project }) {
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Body */}

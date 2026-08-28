@@ -11,106 +11,101 @@ export default function About() {
   }, []);
 
   const focus = ["Clean code", "Responsive UI", "Small details"];
+  const stats = [
+    ["01", "Think clearly"],
+    ["02", "Build carefully"],
+    ["03", "Polish relentlessly"],
+  ];
 
   return (
-    <section 
-      id="about" 
-      className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden"
+    <section
+      id="about"
+      className="relative min-h-screen scroll-mt-20 py-28 px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
-      {/* Subtle ambient blob */}
-      <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 w-[24rem] h-96 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.08] blur-3xl" />
-
-      <div className="relative max-w-5xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-        {/* Left — copy */}
+      <div className="relative max-w-6xl w-full mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
         <div className="text-left">
           <p
-            className="text-accent dark:text-indigo-400 mb-3 text-sm"
+            className="text-accent dark:text-indigo-400 mb-4 text-sm font-medium"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
             // about
           </p>
           <h2
-            className="text-3xl md:text-4xl font-bold text-[#12141C] dark:text-zinc-100 mb-6 tracking-tight"
+            className="text-4xl md:text-6xl font-bold text-[#12141C] dark:text-zinc-100 mb-6 tracking-tight leading-[1.05]"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            About Me
+            Built with intent.
+            <span className="block text-accent dark:text-indigo-400">Made to matter.</span>
           </h2>
-
-          <p className="text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-4">
+          <div className="w-16 h-1 bg-[#4F46E5] mb-7" />
+          <p className="max-w-xl text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-4">
             I'm a developer who enjoys turning ideas into clean, functional web experiences. I
-            focus on writing readable code, building responsive interfaces, and paying attention
-            to the small details that make a product feel polished.
+            care about readable code, responsive interfaces, and the small details that make a
+            product feel considered.
           </p>
-          <p className="text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-8">
-            When I'm not coding, I'm usually learning something new, exploring design trends, or
-            working on side projects to sharpen my skills.
+          <p className="max-w-xl text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-8">
+            Away from the editor, I'm usually learning something new, exploring design trends, or
+            sharpening my skills through side projects.
           </p>
 
-          <ul className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-2 mb-10">
             {focus.map((item) => (
               <li
                 key={item}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full text-accent dark:text-indigo-300 bg-accent/[0.07] dark:bg-zinc-900 dark:border-zinc-800 border border-accent/15"
+                className="text-xs font-semibold px-3 py-1.5 rounded-full text-accent dark:text-indigo-300 bg-white dark:bg-zinc-900 border border-indigo-200 dark:border-zinc-800"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 {item}
               </li>
             ))}
           </ul>
+
+          <div className="grid grid-cols-3 max-w-md border-t border-black/10 dark:border-zinc-800 pt-5">
+            {stats.map(([number, label]) => (
+              <div key={number} className="pr-3">
+                <p className="text-accent dark:text-indigo-400 text-xs font-bold mb-1" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                  {number}
+                </p>
+                <p className="text-sm font-semibold text-[#12141C] dark:text-zinc-200">{label}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Right — bio-as-code card */}
-        <div className="relative">
-          <div className="rounded-2xl bg-[#12141C] dark:bg-black shadow-2xl shadow-black/50 overflow-hidden border border-white/5 dark:border-zinc-800">
-            {/* window chrome */}
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5 dark:border-zinc-800/80 bg-white/2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
-              <span
-                className="ml-3 text-[11px] text-white/30 dark:text-zinc-500"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
+        <div className="relative w-full">
+          <div className="absolute -top-5 -right-4 md:-right-7 bg-[#4F46E5] text-white px-4 py-2 text-xs font-bold tracking-wide z-10" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            available for good work
+          </div>
+          <div className="rounded-2xl bg-[#12141C] dark:bg-black shadow-2xl shadow-black/40 overflow-hidden border border-[#12141C] dark:border-zinc-800">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+              </div>
+              <span className="text-[11px] text-white/40" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
                 about.js
               </span>
+              <span className="text-[10px] text-[#27C93F] uppercase tracking-widest" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                live
+              </span>
             </div>
-
-            {/* code body */}
-            <pre
-              className="px-5 py-6 text-[13px] leading-7 overflow-x-auto"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
+            <pre className="px-6 py-8 text-[13px] md:text-sm leading-8 overflow-x-auto" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
               <code>
-                <span className="text-[#7C7FE0]">const</span>{" "}
-                <span className="text-white">biniam</span>{" "}
-                <span className="text-white/50">=</span>{" "}
-                <span className="text-white/50">{"{"}</span>
-                {"\n  "}
-                <span className="text-[#93C5FD]">role</span>
-                <span className="text-white/50">:</span>{" "}
-                <span className="text-[#F0B86E]">"Frontend Developer"</span>
-                <span className="text-white/50">,</span>
-                {"\n  "}
-                <span className="text-[#93C5FD]">focus</span>
-                <span className="text-white/50">:</span>{" "}
-                <span className="text-white/50">[</span>
-                <span className="text-[#F0B86E]">"clean code"</span>
-                <span className="text-white/50">,</span>{" "}
-                <span className="text-[#F0B86E]">"responsive UI"</span>
-                <span className="text-white/50">],</span>
-                {"\n  "}
-                <span className="text-[#93C5FD]">currently</span>
-                <span className="text-white/50">:</span>{" "}
-                <span className="text-[#F0B86E]">"learning something new"</span>
-                <span className="text-white/50">,</span>
-                {"\n"}
-                <span className="text-white/50">{"};"}</span>
+                <span className="text-white/30">01 </span><span className="text-[#7C7FE0]">const</span>{" "}
+                <span className="text-white">biniam</span>{" "}<span className="text-white/50">=</span>{" "}<span className="text-white/50">{"{"}</span>{"\n"}
+                <span className="text-white/30">02 </span>{"  "}<span className="text-[#93C5FD]">role</span><span className="text-white/50">:</span>{" "}<span className="text-[#F0B86E]">"Frontend Developer"</span><span className="text-white/50">,</span>{"\n"}
+                <span className="text-white/30">03 </span>{"  "}<span className="text-[#93C5FD]">focus</span><span className="text-white/50">:</span>{" "}<span className="text-white/50">[</span><span className="text-[#F0B86E]">"clarity"</span><span className="text-white/50">,</span>{" "}<span className="text-[#F0B86E]">"craft"</span><span className="text-white/50">],</span>{"\n"}
+                <span className="text-white/30">04 </span>{"  "}<span className="text-[#93C5FD]">currently</span><span className="text-white/50">:</span>{" "}<span className="text-[#F0B86E]">"learning something new"</span><span className="text-white/50">,</span>{"\n"}
+                <span className="text-white/30">05 </span>{"  "}<span className="text-[#93C5FD]">status</span><span className="text-white/50">:</span>{" "}<span className="text-[#27C93F]">"open_to_ideas"</span>{"\n"}
+                <span className="text-white/30">06 </span><span className="text-white/50">{"};"}</span>
               </code>
             </pre>
+            <div className="flex items-center justify-between border-t border-white/10 px-6 py-4 text-[11px] text-white/40" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+              <span>shipping thoughtful interfaces</span>
+              <span className="text-[#818CF8]">v.2026</span>
+            </div>
           </div>
-
-          {/* subtle accent glow beneath the card */}
-          <div className="pointer-events-none absolute -z-10 -bottom-6 -left-6 w-40 h-40 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-20 dark:opacity-20 blur-3xl" />
         </div>
       </div>
     </section>

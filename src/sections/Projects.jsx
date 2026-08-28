@@ -15,12 +15,9 @@ export default function Projects() {
   return (
     <section 
       id="projects" 
-      className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden"
+      className="relative min-h-screen scroll-mt-20 py-28 px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
       {/* Ambient background glow blobs */}
-      <div className="pointer-events-none absolute top-1/3 -left-20 w-80 h-80 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
-      <div className="pointer-events-none absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-linear-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.06] dark:opacity-[0.10] blur-3xl" />
-
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p

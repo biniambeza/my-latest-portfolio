@@ -15,11 +15,9 @@ export default function Certificates() {
   return (
     <section 
       id="certificates" 
-      className="relative py-28 px-6 bg-white dark:bg-[#09090B] transition-colors duration-300 overflow-hidden"
+      className="relative min-h-screen scroll-mt-20 py-28 px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
       {/* Ambient background glow blob */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-136 h-80 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.05] dark:opacity-[0.10] blur-3xl" />
-
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p

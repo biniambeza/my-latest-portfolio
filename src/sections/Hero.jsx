@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-[#F7F8FA] dark:bg-[#09090B] text-[#12141C] dark:text-zinc-100 transition-colors duration-300"
+      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-[#e5e7eb] dark:bg-[#09090B] text-[#12141C] dark:text-zinc-100 transition-colors duration-300"
     >
       <style>{`
         @keyframes drift-a {
@@ -41,34 +41,6 @@ export default function Hero() {
         .fade-up-4 { animation: fade-up 0.6s ease-out 0.3s both; }
         .fade-up-5 { animation: fade-up 0.6s ease-out 0.4s both; }
       `}</style>
-
-      {/* Ambient gradient blobs */}
-      <div
-        className="pointer-events-none absolute -top-24 -left-24 w-104 h-104 rounded-full bg-linear-to-br from-[#4F46E5] to-[#7C3AED] opacity-[0.14] dark:opacity-[0.12] blur-3xl"
-        style={{ animation: "drift-a 14s ease-in-out infinite" }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-32 -right-16 w-120 h-120 rounded-full bg-linear-to-br from-[#7C3AED] to-[#4F46E5] opacity-[0.12] dark:opacity-[0.10] blur-3xl"
-        style={{ animation: "drift-b 16s ease-in-out infinite" }}
-      />
-
-      {/* Faint grid texture (Dark overlay in dark mode, light overlay in light mode) */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035] dark:hidden"
-        style={{
-          backgroundImage:
-            "linear-gradient(#12141C 1px, transparent 1px), linear-gradient(90deg, #12141C 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05] hidden dark:block"
-        style={{
-          backgroundImage:
-            "linear-gradient(#FFFFFF 1px, transparent 1px), linear-gradient(90deg, #FFFFFF 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-        }}
-      />
 
       <div className="relative z-10 flex flex-col items-center">
         {/* Code pill badge */}
@@ -94,7 +66,7 @@ export default function Hero() {
         >
           I build things for the web.
           <span
-            className="inline-block w-0.75 h-6 md:h-7 bg-linear-to-b from-[#4F46E5] to-[#7C3AED] ml-1"
+            className="inline-block w-0.75 h-6 md:h-7 bg-[#4F46E5] ml-1"
             style={{ opacity: cursorOn ? 1 : 0 }}
           />
         </h2>
@@ -108,7 +80,7 @@ export default function Hero() {
         <div className="fade-up-5 flex flex-col sm:flex-row gap-4">
           <a
             href="#projects"
-            className="bg-linear-to-r from-[#4F46E5] to-[#7C3AED] text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            className="bg-[#4F46E5] text-white px-7 py-3 rounded-full font-bold shadow-lg shadow-indigo-500/25 dark:shadow-indigo-500/20 transition-all duration-300 hover:bg-[#4338CA] hover:shadow-indigo-500/40 hover:-translate-y-0.5"
           >
             View My Work
           </a>
