@@ -4,11 +4,11 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const COMMAND = "$ ./send_message.sh --direct";
 const email = "biniambeza544@gmail.com";
-const phone = "+251 99 383 5149";
+const phone = "+251993835149";
 const socials = [
-  { name: "Telegram", href: "https://t.me/ben_1216", icon: Send, color: "#229ED9", background: "#DCF3FE" },
-  { name: "GitHub", href: "https://github.com/biniambeza", icon: FaGithub, color: "#24292F", background: "#E5E7EB" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/biniam-beza/", icon: FaLinkedinIn, color: "#0A66C2", background: "#DBEAFE" },
+  { name: "Telegram", href: "https://t.me/ben_1216", icon: Send, color: "#1597ff", background: "#DCF3FE" },
+  { name: "GitHub", href: "https://github.com/biniambeza", icon: FaGithub, color: "#1597ff", background: "#E5E7EB" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/biniam-beza/", icon: FaLinkedinIn, color: "#1597ff", background: "#DBEAFE" },
 ];
 
 export default function Contact() {
@@ -99,11 +99,11 @@ export default function Contact() {
               style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               Let's make
-              <span className="block text-indigo-600 dark:text-indigo-400">
+              <span className="block text-[#1597ff]-600 dark:[#1597ff]-600">
                 something useful.
               </span>
             </h2>
-            <div className="w-16 h-1 bg-indigo-600 dark:bg-indigo-400 mb-7 rounded-full" />
+            <div className="w-16 h-1 bg-[#1597ff]/600 dark:[#1597ff]/600 mb-7 rounded-full" />
             <p className="max-w-md text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-8">
               Have a project in mind, a question to ask, or an idea worth
               exploring? Send a note and I will get back to you.
@@ -115,7 +115,7 @@ export default function Contact() {
               className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              <Mail size={16} className="text-indigo-600 dark:text-indigo-400" />
+              <Mail size={16} className="text-[#1597ff] dark:text-[#1597ff]" />
               {email}
               <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
                 {copied ? (
@@ -131,10 +131,10 @@ export default function Contact() {
             <button
               onClick={handlePhoneCopy}
               aria-live="polite"
-              className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
+              className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1597ff] rounded-md px-1 -mx-1"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              <Phone size={16} className="text-indigo-600 dark:text-indigo-400" />
+              <Phone size={16} className="text-[#1597ff] dark:text-[#1597ff]/600" />
               {phone}
               <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
                 {phoneCopied ? (
@@ -188,7 +188,7 @@ export default function Contact() {
                     name="name"
                     type="text"
                     placeholder="Your name"
-                    className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-400 focus:bg-white/10 transition-colors"
+                    className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#1597ff]/600 focus:bg-white/10 transition-colors"
                   />
                 </label>
                 <label className="text-left">
@@ -200,7 +200,7 @@ export default function Contact() {
                     name="senderEmail"
                     type="email"
                     placeholder="you@example.com"
-                    className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-400 focus:bg-white/10 transition-colors"
+                    className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#1597ff]/600 focus:bg-white/10 transition-colors"
                   />
                 </label>
               </div>
@@ -219,7 +219,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={sending}
-                className="group w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                className="group w-full inline-flex items-center justify-center gap-2 bg-[#1597ff] hover:bg-[#1597ff] disabled:opacity-70 disabled:cursor-wait text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               >
                 {sending ? "Opening your email app…" : "Send message"}
                 {!sending && (

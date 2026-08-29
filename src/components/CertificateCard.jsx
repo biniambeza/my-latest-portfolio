@@ -13,7 +13,7 @@ export default function CertificateCard({ certificate }) {
     .toUpperCase();
 
   const CardInner = (
-    <div className="group relative h-full flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-black/10 dark:border-zinc-800 p-3 md:p-4 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/10 hover:border-indigo-300 dark:hover:border-indigo-800">
+    <div className="group relative h-full flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-black/10 dark:border-zinc-800 p-3 md:p-4 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-/10 hover:border-[#1597ff]/60 dark:hover:border-[#1597ff]/600">
       <div className="relative flex flex-col h-full">
         <div className="flex items-center justify-between mb-4">
           {image ? (
@@ -52,7 +52,7 @@ export default function CertificateCard({ certificate }) {
         </h3>
         <p className="text-sm text-[#6B7280] dark:text-zinc-400 mb-1 transition-colors">{issuer}</p>
         {link && (
-          <a href={link} target="_blank" rel="noopener noreferrer" className="mt-auto pt-3 md:pt-5 inline-flex items-center gap-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-accent dark:text-indigo-400 group-hover:text-accent-purple dark:group-hover:text-indigo-300 transition-colors" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <a href={link} target="_blank" rel="noopener noreferrer" className="mt-auto pt-3 md:pt-5 inline-flex items-center gap-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-accent[#1597ff]/60 group-hover:text-accent-purple dark:group-hover:text-[#1597ff]/600 transition-colors" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             View credential
             <svg
               width="13"
