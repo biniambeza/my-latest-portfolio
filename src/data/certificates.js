@@ -18,20 +18,4 @@ export const certificates = [
     image: BestProject,
     link: "",
   },
-  {
-    id: 3,
-    title: "Responsive Web Design",
-    issuer: "freeCodeCamp",
-    date: "2024",
-    image: null,
-    link: "https://freecodecamp.org/certification/example3",
-  },
-  {
-    id: 4,
-    title: "JavaScript Algorithms and Data Structures",
-    issuer: "freeCodeCamp",
-    date: "2024",
-    image: null,
-    link: "https://freecodecamp.org/certification/example4",
-  },
 ];

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Send, Check, ArrowUpRight, Phone, Mail } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
+const COMMAND = "$ ./send_message.sh --direct";
 const email = "biniambeza544@gmail.com";
 const phone = "+251 99 383 5149";
 const socials = [
@@ -9,8 +10,6 @@ const socials = [
   { name: "GitHub", href: "https://github.com/biniambeza", icon: FaGithub, color: "#24292F", background: "#E5E7EB" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/biniam-beza/", icon: FaLinkedinIn, color: "#0A66C2", background: "#DBEAFE" },
 ];
-
-const COMMAND = "run contact.form --send";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -48,17 +47,27 @@ export default function Contact() {
     return () => clearInterval(id);
   }, []);
 
-  const handleCopy = () => {
-    navigator.clipboard?.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
+  const copyToClipboard = async (text, setCopiedState) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+      setCopiedState(true);
+      setTimeout(() => setCopiedState(false), 1800);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
   };
 
-  const handlePhoneCopy = () => {
-    navigator.clipboard?.writeText(phone);
-    setPhoneCopied(true);
-    setTimeout(() => setPhoneCopied(false), 1800);
-  };
+  const handleCopy = () => copyToClipboard(email, setCopied);
+  const handlePhoneCopy = () => copyToClipboard(phone, setPhoneCopied);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -90,11 +99,11 @@ export default function Contact() {
               style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
               Let's make
-              <span className="block text-accent dark:text-indigo-400">
+              <span className="block text-indigo-600 dark:text-indigo-400">
                 something useful.
               </span>
             </h2>
-            <div className="w-16 h-1 bg-accent mb-7 rounded-full" />
+            <div className="w-16 h-1 bg-indigo-600 dark:bg-indigo-400 mb-7 rounded-full" />
             <p className="max-w-md text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-8">
               Have a project in mind, a question to ask, or an idea worth
               exploring? Send a note and I will get back to you.
@@ -106,7 +115,7 @@ export default function Contact() {
               className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              <Mail size={16} className="text-accent dark:text-indigo-400" />
+              <Mail size={16} className="text-indigo-600 dark:text-indigo-400" />
               {email}
               <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
                 {copied ? (
@@ -125,7 +134,7 @@ export default function Contact() {
               className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              <Phone size={16} className="text-accent dark:text-indigo-400" />
+              <Phone size={16} className="text-indigo-600 dark:text-indigo-400" />
               {phone}
               <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
                 {phoneCopied ? (
@@ -166,32 +175,23 @@ export default function Contact() {
             className="relative w-full max-w-xl lg:justify-self-end bg-[#0B0C14] border border-[#23283A] rounded-2xl overflow-hidden shadow-2xl shadow-black/30 transition-shadow duration-500 focus-within:shadow-indigo-500/20 focus-within:border-[#3B3FA0]"
           >
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-[#FF5F56] inline-block" />
+                <span className="w-3 h-3 rounded-full bg-[#FFBD2E] inline-block" />
+                <span className="w-3 h-3 rounded-full bg-[#27C93F] inline-block" />
               </div>
-              <p
-                className="text-xs font-bold text-white/80"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                contact.form
-              </p>
               <span
                 className="text-[10px] uppercase tracking-[0.2em] text-[#27C93F] flex items-center gap-1.5"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F] animate-pulse" />
-                online
+                bash -- 80x24
               </span>
             </div>
 
-            {/* typed command line — the signature detail */}
             <div
               className="px-5 sm:px-6 pt-4 text-[13px] text-[#7DD3FC] min-h-5"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              <span className="text-white/30">$ </span>
               {typed}
               <span className="inline-block w-1.75 h-3.25 bg-[#7DD3FC] ml-0.5 align-middle animate-[blink_1s_steps(1)_infinite]" />
             </div>
@@ -238,7 +238,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={sending}
-                className="group w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-[#6366F1] disabled:opacity-70 disabled:cursor-wait text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                className="group w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               >
                 {sending ? "Opening your email app…" : "Send message"}
                 {!sending && (
