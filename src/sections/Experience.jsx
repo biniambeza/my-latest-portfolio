@@ -66,7 +66,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative min-h-screen scroll-mt-20 py-16 md:py-24 px-4 sm:px-6 bg-[#e5e7eb] dark:bg-[#050505] transition-colors duration-300 flex items-center overflow-hidden"
+      className="relative min-h-screen scroll-mt-20 py-10 md:py-24 px-4 sm:px-6 bg-[#e5e7eb] dark:bg-[#050505] transition-colors duration-300 flex items-center overflow-hidden"
     >
       <style>{`
         @keyframes timeline-reveal {

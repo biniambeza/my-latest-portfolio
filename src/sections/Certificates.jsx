@@ -15,7 +15,7 @@ export default function Certificates() {
   return (
     <section 
       id="certificates" 
-      className="relative min-h-screen scroll-mt-20 py-10 md:py-24 px-4 sm:px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
+      className="relative min-h-screen scroll-mt-20 py- 0 md:py-24 px-4 sm:px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
     >
       <div className="relative max-w-6xl w-full mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7 md:mb-10">
