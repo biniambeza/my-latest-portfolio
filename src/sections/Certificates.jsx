@@ -20,12 +20,6 @@ export default function Certificates() {
       <div className="relative max-w-6xl w-full mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7 md:mb-10">
           <div>
-            <p
-              className="text-accent dark:text-indigo-400 mb-3 text-sm"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              // achievements
-            </p>
             <h2
               className="text-3xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 tracking-tight"
               style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}

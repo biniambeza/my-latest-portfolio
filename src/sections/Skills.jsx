@@ -1,27 +1,33 @@
 import { useEffect, useRef, useState } from "react";
-import { FaCss3Alt, FaFigma, FaGitAlt, FaHtml5, FaJsSquare, FaNodeJs, FaReact } from "react-icons/fa";
-import { SiTailwindcss } from "react-icons/si";
+import { FaCss3Alt, FaGitAlt, FaHtml5, FaJsSquare, FaNodeJs, FaReact, FaGithub } from "react-icons/fa";
+import { SiTailwindcss, SiMongodb, SiPostgresql, SiExpress } from "react-icons/si";
 
 const icons = {
   React: FaReact,
   JavaScript: FaJsSquare,
   "Tailwind CSS": SiTailwindcss,
-  HTML5: FaHtml5,
-  CSS3: FaCss3Alt,
-  "Git & GitHub": FaGitAlt,
+  HTML: FaHtml5,
+  CSS: FaCss3Alt,
   "Node.js": FaNodeJs,
-  Figma: FaFigma,
+  "Express.js": SiExpress,
+  MongoDB: SiMongodb,
+  PostgreSQL: SiPostgresql,
+  Git: FaGitAlt,
+  GitHub: FaGithub,
 };
 
 const skills = [
-  { name: "React", type: "Interface", description: "Dynamic UI systems", color: "#61DAFB" },
-  { name: "JavaScript", type: "Language", description: "Thoughtful interactions", color: "#F7DF1E" },
-  { name: "Tailwind CSS", type: "Styling", description: "Fast visual language", color: "#38BDF8" },
-  { name: "HTML5", type: "Structure", description: "Semantic foundations", color: "#F97316" },
-  { name: "CSS3", type: "Styling", description: "Polished responsive details", color: "#3B82F6" },
-  { name: "Git & GitHub", type: "Workflow", description: "Clean collaboration", color: "#F05032" },
-  { name: "Node.js", type: "Runtime", description: "Reliable web services", color: "#83CD29" },
-  { name: "Figma", type: "Design", description: "Ideas into direction", color: "#A259FF" },
+  { name: "React", type: "Frontend", description: "Dynamic UI systems", color: "#61DAFB" },
+  { name: "JavaScript", type: "Frontend", description: "Interactive experiences", color: "#F7DF1E" },
+  { name: "HTML", type: "Frontend", description: "Semantic markup", color: "#F97316" },
+  { name: "CSS", type: "Frontend", description: "Responsive styling", color: "#3B82F6" },
+  { name: "Tailwind CSS", type: "Frontend", description: "Utility-first CSS", color: "#38BDF8" },
+  { name: "Node.js", type: "Backend", description: "Server runtime", color: "#83CD29" },
+  { name: "Express.js", type: "Backend", description: "Web framework", color: "#000000" },
+  { name: "MongoDB", type: "Database", description: "NoSQL database", color: "#13AA52" },
+  { name: "PostgreSQL", type: "Database", description: "Relational database", color: "#336791" },
+  { name: "Git", type: "Tools", description: "Version control", color: "#F05032" },
+  { name: "GitHub", type: "Tools", description: "Code collaboration", color: "#181717" },
 ];
 
 export default function Skills() {
@@ -75,12 +81,6 @@ export default function Skills() {
       <div className="relative max-w-6xl w-full mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
           <div>
-          <p
-          className="text-accent dark:text-indigo-400 mb-3 text-sm"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          // what i know
-        </p>
         <h2
           className="text-4xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 tracking-tight leading-none"
           style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}

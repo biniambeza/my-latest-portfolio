@@ -20,12 +20,6 @@ export default function Projects() {
       <div className="relative max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <p
-              className="text-accent dark:text-indigo-400 mb-3 text-sm"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              // selected work
-            </p>
             <h2
               className="text-4xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 tracking-tight"
               style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}

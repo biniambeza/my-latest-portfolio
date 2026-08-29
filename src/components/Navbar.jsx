@@ -3,9 +3,9 @@ import useDarkMode from "../useDarkmode"; // Adjust path if located in src/hooks
 
 const navLinks = [
   { name: "About", href: "#hero" },
-  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "Certificates", href: "#certificates" },
   { name: "Contact", href: "#contact" },
 ];
@@ -40,7 +40,7 @@ export default function Navbar() {
           : "bg-[#e5e7eb] dark:bg-[#050505] border-b border-transparent"
       }`}
     >
-      <div className="max-w-[1060px] mx-auto w-full px-5 py-2.5 flex items-center justify-between">
+      <div className="max-w-265 mx-auto w-full px-5 py-2.5 flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="group flex items-center gap-2.5">
           <span className="w-8 h-8 flex items-center justify-center text-[#12141C] dark:text-white font-bold text-lg transition-transform duration-300 group-hover:scale-105">

@@ -1,34 +1,37 @@
+import udacityImage from "../assets/certificates/udacity-programming.png";
+import BestProject from "../assets/certificates/Best_Project_Award.jpg";
+
 export const certificates = [
   {
     id: 1,
-    title: "React - The Complete Guide",
-    issuer: "Udemy",
-    date: "2025",
-    image: "https://placehold.co/400x300",
-    link: "https://udemy.com/certificate/example1",
+    title: "Programming Fundamentals",
+    issuer: "Udacity",
+    date: "2024",
+    image: udacityImage,
+    link: "https://www.udacity.com/certificate/e/b6a35832-52a5-11ef-b906-df0d9776e774",
   },
   {
     id: 2,
-    title: "JavaScript Algorithms and Data Structures",
-    issuer: "freeCodeCamp",
-    date: "2024",
-    image: "https://placehold.co/400x300",
-    link: "https://freecodecamp.org/certification/example2",
+    title: "Best Project of The Year Award",
+    issuer: "Bahir Dar University",
+    date: "2026",
+    image: BestProject,
+    link: "",
   },
   {
     id: 3,
     title: "Responsive Web Design",
     issuer: "freeCodeCamp",
     date: "2024",
-    image: "https://placehold.co/400x300",
+    image: null,
     link: "https://freecodecamp.org/certification/example3",
   },
   {
     id: 4,
-    title: "Best Hackathon Project Award",
-    issuer: "TechFest 2025",
-    date: "2025",
-    image: "https://placehold.co/400x300",
-    link: "",
+    title: "JavaScript Algorithms and Data Structures",
+    issuer: "freeCodeCamp",
+    date: "2024",
+    image: null,
+    link: "https://freecodecamp.org/certification/example4",
   },
 ];

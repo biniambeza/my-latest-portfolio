@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Send, Check, ArrowUpRight } from "lucide-react";
+import { Send, Check, ArrowUpRight, Phone, Mail } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
-const email = "your.email@example.com";
+const email = "biniambeza544@gmail.com";
+const phone = "+251 99 383 5149";
 const socials = [
   { name: "Telegram", href: "https://t.me/biniambeza", icon: Send, color: "#229ED9", background: "#DCF3FE" },
   { name: "GitHub", href: "https://github.com/biniambeza", icon: FaGithub, color: "#24292F", background: "#E5E7EB" },
@@ -13,6 +14,7 @@ const COMMAND = "run contact.form --send";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [phoneCopied, setPhoneCopied] = useState(false);
   const [typed, setTyped] = useState(() => {
     if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
       return COMMAND;
@@ -52,6 +54,12 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 1800);
   };
 
+  const handlePhoneCopy = () => {
+    navigator.clipboard?.writeText(phone);
+    setPhoneCopied(true);
+    setTimeout(() => setPhoneCopied(false), 1800);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (sending) return;
@@ -77,12 +85,6 @@ export default function Contact() {
         <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-20 items-center">
           {/* Left: thesis */}
           <div className="text-left">
-            <p
-              className="text-accent dark:text-indigo-400 mb-4 text-sm tracking-wide"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              // get in touch
-            </p>
             <h2
               className="text-4xl md:text-6xl font-bold text-[#12141C] dark:text-zinc-100 mb-6 tracking-tight leading-[1.05]"
               style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
@@ -101,13 +103,32 @@ export default function Contact() {
             <button
               onClick={handleCopy}
               aria-live="polite"
-              className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
+              className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              <span className="text-accent dark:text-indigo-400">$</span>
+              <Mail size={16} className="text-accent dark:text-indigo-400" />
               {email}
               <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
                 {copied ? (
+                  <>
+                    <Check size={13} className="text-[#27C93F]" /> copied
+                  </>
+                ) : (
+                  "copy"
+                )}
+              </span>
+            </button>
+
+            <button
+              onClick={handlePhoneCopy}
+              aria-live="polite"
+              className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              <Phone size={16} className="text-accent dark:text-indigo-400" />
+              {phone}
+              <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
+                {phoneCopied ? (
                   <>
                     <Check size={13} className="text-[#27C93F]" /> copied
                   </>
