@@ -86,16 +86,10 @@ export default function Skills() {
           style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
         >
           A toolkit for
-          <span className="block text-accent dark:text-indigo-400">building better.</span>
+          <span className="block text-accent">building better</span>
         </h2>
           </div>
           <div className="md:max-w-sm md:text-right">
-            <p className="text-[#4B5060] dark:text-zinc-400 leading-relaxed">
-              The tools I use to turn rough ideas into fast, accessible, and carefully finished experiences.
-            </p>
-            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-accent dark:text-indigo-400" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-              {String(skills.length).padStart(2, "0")} tools in rotation
-            </p>
           </div>
         </div>
 
@@ -138,7 +132,7 @@ export default function Skills() {
               </div>
 
               <span className="relative text-sm font-bold text-[#12141C] dark:text-zinc-100 transition-colors">{skill.name}</span>
-              <span className="text-[10px] uppercase tracking-widest text-accent dark:text-indigo-400" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{skill.type}</span>
+              <span className="text-[10px] uppercase tracking-widest text-accent" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{skill.type}</span>
               <span className="hidden sm:block text-xs text-[#6B7280] dark:text-zinc-500">{skill.description}</span>
             </div>
           ))}

@@ -6,7 +6,7 @@ const COMMAND = "$ ./send_message.sh --direct";
 const email = "biniambeza544@gmail.com";
 const phone = "+251 99 383 5149";
 const socials = [
-  { name: "Telegram", href: "https://t.me/biniambeza", icon: Send, color: "#229ED9", background: "#DCF3FE" },
+  { name: "Telegram", href: "https://t.me/ben_1216", icon: Send, color: "#229ED9", background: "#DCF3FE" },
   { name: "GitHub", href: "https://github.com/biniambeza", icon: FaGithub, color: "#24292F", background: "#E5E7EB" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/biniam-beza/", icon: FaLinkedinIn, color: "#0A66C2", background: "#DBEAFE" },
 ];

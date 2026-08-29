@@ -28,12 +28,6 @@ export default function Projects() {
             </h2>
           </div>
           <div className="md:max-w-sm md:text-right">
-            <p className="text-[#6B7280] dark:text-zinc-400 leading-relaxed">
-              A small collection of products, experiments, and lessons turned into interfaces.
-            </p>
-            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-accent dark:text-indigo-400" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-              {String(projectsList.length).padStart(2, "0")} projects / and counting
-            </p>
           </div>
         </div>
 

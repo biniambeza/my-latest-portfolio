@@ -38,7 +38,7 @@ export default function Card({ project }) {
           >
             {title}
           </h3>
-          <span className="text-indigo-200 dark:text-indigo-900 text-2xl leading-none" aria-hidden="true">↗</span>
+          <span className="text-indigo-200 text-2xl leading-none" aria-hidden="true">↗</span>
         </div>
         <p className="text-sm text-[#6B7280] dark:text-zinc-400 leading-relaxed mb-4 flex-1 transition-colors">
           {description}
@@ -49,7 +49,7 @@ export default function Card({ project }) {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] font-semibold px-2.5 py-1 rounded-full text-accent dark:text-indigo-400 bg-accent/[0.07] dark:bg-indigo-500/10 border border-accent/15 dark:border-indigo-500/20"
+                className="text-[11px] font-semibold px-2.5 py-1 rounded-full text-accent bg-accent/[0.07] dark:bg-indigo-500/10 border border-accent/15 dark:border-indigo-500/20"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 {tag}
@@ -64,7 +64,7 @@ export default function Card({ project }) {
               href={live || demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent dark:text-indigo-400 hover:text-accent-purple dark:hover:text-indigo-300 transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-purple dark:hover:text-indigo-300 transition-colors"
             >
               Live Demo
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

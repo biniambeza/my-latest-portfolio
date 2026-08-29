@@ -42,12 +42,6 @@ export default function Hero() {
 
       <div className="relative z-10 grid w-full max-w-6xl mx-auto lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-20 items-center">
         <div className="text-left">
-        <p
-          className="fade-up-1 inline-block text-[#1597ff] mb-7 text-xs px-3 py-1.5 bg-[#071a2e] border border-[#0d3d68]"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          Frontend Developer
-        </p>
 
         <h1
           className="fade-up-2 text-5xl sm:text-6xl lg:text-8xl font-bold text-[#12141C] dark:text-white mb-5 tracking-tight leading-[0.95]"
@@ -85,19 +79,19 @@ export default function Hero() {
 
         <div className="grid gap-4">
           <div className="grid grid-cols-2 gap-px bg-[#303238] border border-[#303238]">
-            {[['01', 'Projects delivered'], ['02', 'Core technologies'], ['03', 'Years learning'], ['04', 'Curious mind']].map(([number, label]) => (
+            {[['01', 'Projects delivered'], ['02', 'Core technologies'], ['03', 'Years Experience'], ['04', 'Curious mind']].map(([number, label]) => (
               <div key={number} className="bg-[#202124] px-5 py-5">
-                <p className="text-3xl font-bold text-white mb-1">{number === '01' ? '08+' : number === '02' ? '12+' : number === '03' ? '03+' : '∞'}</p>
+                <p className="text-3xl font-bold text-white mb-1">{number === '01' ? '5+' : number === '02' ? '11+' : number === '03' ? '4+' : '∞'}</p>
                 <p className="text-[10px] uppercase tracking-widest text-[#8f96a3]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{label}</p>
               </div>
             ))}
           </div>
           <div className="bg-[#202124] border border-[#303238] p-5">
             <div className="flex items-center gap-3 text-sm text-[#c4c8d0] mb-4"><MapPin size={16} className="text-[#1597ff]" /> Addis Ababa, Ethiopia</div>
-            <div className="flex items-center gap-3 text-sm text-[#c4c8d0] mb-5"><Mail size={16} className="text-[#1597ff]" /> {"your.email@example.com"}</div>
+            <div className="flex items-center gap-3 text-sm text-[#c4c8d0] mb-5"><Mail size={16} className="text-[#1597ff]" /> {"biniambeza544@gmail.com"}</div>
             <div className="flex gap-6 text-[#1597ff]">
               <a href="https://github.com/biniambeza" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors"><FaGithub /> GitHub</a>
-              <a href="https://www.linkedin.com/in/biniam-beza/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors"><FaLinkedinIn /> LinkedIn</a>
+              <a href="https://www.linkedin.com/in/biniam-beza-3a7b0542b?" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors"><FaLinkedinIn /> LinkedIn</a>
             </div>
           </div>
         </div>

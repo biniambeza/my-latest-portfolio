@@ -28,12 +28,7 @@ export default function Certificates() {
             </h2>
           </div>
           <div className="md:max-w-sm md:text-right">
-            <p className="text-[#6B7280] dark:text-zinc-400 leading-relaxed">
-              Proof of practice, curiosity, and the work behind the work.
-            </p>
-            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-accent dark:text-indigo-400" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-              {String(certificates.length).padStart(2, "0")} milestones collected
-            </p>
+           
           </div>
         </div>
 

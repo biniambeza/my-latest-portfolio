@@ -3,12 +3,12 @@ export default function Footer() {
     <footer className="border-t border-black/10 bg-[#e5e7eb] px-6 py-7 transition-colors duration-300 dark:border-zinc-800 dark:bg-[#09090B]">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="w-5 h-5 rounded-md bg-accent" />
+        
           <p
             className="text-[#6B7280] dark:text-zinc-400 text-sm transition-colors duration-300"
             style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
           >
-            © {new Date().getFullYear()} Biniam Beza - built with React &amp; Tailwind
+            © {new Date().getFullYear()} Biniam Beza
           </p>
         </div>
 

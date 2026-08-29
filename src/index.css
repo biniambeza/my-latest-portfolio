@@ -4,19 +4,19 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent: #4f46e5;
-  --color-accent-purple: #7c3aed;
+  --color-accent: #1597ff;
+  --color-accent-purple: #1597ff; 
 }
 
 :root {
   --bg-main: #ffffff;
   --bg-card: #ffffff;
-  --text-main: #12141c;
+  --text-main: #070707;
 }
 
 .dark {
-  --bg-main: #09090b;
-  --bg-card: #18181b;
+  --bg-main: #101014;
+  --bg-card: #282832;
   --text-main: #f4f4f5;
 }
 

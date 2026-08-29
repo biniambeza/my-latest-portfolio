@@ -43,15 +43,10 @@ export default function Navbar() {
       <div className="max-w-265 mx-auto w-full px-5 py-2.5 flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="group flex items-center gap-2.5">
-          <span className="w-8 h-8 flex items-center justify-center text-[#12141C] dark:text-white font-bold text-lg transition-transform duration-300 group-hover:scale-105">
+          <span className="w-0 h-8 flex items-center justify-center text-[#12141C] dark:text-white font-bold text-lg transition-transform duration-300 group-hover:scale-105">
             BB
           </span>
-          <span
-            className="hidden sm:inline text-lg font-bold tracking-tight text-[#12141C] dark:text-white transition-colors"
-            style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-          >
-            Biniam<span className="text-[#1597ff]">.</span>
-          </span>
+
         </a>
 
         {/* Desktop links */}
@@ -72,37 +67,8 @@ export default function Navbar() {
         {/* Action Controls (Theme Toggle + Resume CTA) */}
         <div className="hidden md:flex items-center gap-3">
           {/* Dark Mode Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-black/10 dark:hover:bg-[#202124] hover:text-[#12141C] dark:hover:text-white transition-colors focus:outline-none"
-            aria-label="Toggle dark mode"
-          >
-            {theme === "dark" ? (
-              // Sun Icon
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-              </svg>
-            ) : (
-              // Moon Icon
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              </svg>
-            )}
-          </button>
+   
 
-          {/* Resume link */}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-              className="text-xs font-medium text-[#1597ff] hover:text-[#12141C] dark:hover:text-white transition-colors"
-          >
-            Resume
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M7 17L17 7M17 7H8M17 7V16" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
         </div>
 
         {/* Mobile controls wrapper */}

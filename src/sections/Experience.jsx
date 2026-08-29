@@ -3,11 +3,11 @@ import { Briefcase, Code, Rocket } from "lucide-react";
 
 const experience = [
   {
-    period: "2025 — Present",
+    period: "May 2022 — June 2026",
     role: "Student & Developer",
     company: "Bahir Dar University",
     description:
-      "Computer Engineering student (CGPA 3.13) completing final year. Developing full-stack applications with focus on real-world problem solving, system architecture, and production-ready solutions.",
+      "Computer Engineering student completing final year. Developing full-stack applications with focus on real-world problem solving, system architecture, and production-ready solutions.",
     tools: ["React", "Node.js", "PostgreSQL", "Flutter"],
     icon: Code,
     color: "from-blue-500 to-cyan-500",
@@ -96,18 +96,15 @@ export default function Experience() {
               className="text-4xl md:text-6xl font-bold text-[#12141C] dark:text-white tracking-tight leading-none mb-4"
               style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
             >
-              The work so far.
+              The work so far
             </h2>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-[#1597ff] to-cyan-500 rounded-full" />
+            <div/>
           </div>
-          <p className="max-w-sm md:text-right text-[#6B7280] dark:text-[#9aa1ad] leading-relaxed">
-            A timeline of the places, projects, and practice that shaped how I build for the web.
-          </p>
         </div>
 
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1597ff] via-[#1597ff] to-transparent dark:from-indigo-500 dark:via-indigo-500 dark:to-transparent transform md:-translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-[#1597ff] via-[#1597ff] to-transparent" />
 
           {/* Experience Items */}
           <div className="space-y-8 md:space-y-12">
@@ -128,7 +125,7 @@ export default function Experience() {
 
                     {/* Center Dot */}
                     <div className="flex justify-center">
-                      <div className={`relative w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow-lg ring-4 ring-[#e5e7eb] dark:ring-[#050505] hover:scale-110 transition-transform duration-300`}>
+                      <div className={`relative w-12 h-12 rounded-full bg-linear-to-br ${item.color} flex items-center justify-center text-white shadow-lg ring-4 ring-[#e5e7eb] dark:ring-[#050505] hover:scale-110 transition-transform duration-300`}>
                         <IconComponent size={20} />
                       </div>
                     </div>
@@ -155,14 +152,15 @@ export default function Experience() {
                         {/* Mobile dot */}
                         <div className="md:hidden absolute -left-6 top-3 w-3 h-3 rounded-full bg-[#1597ff] ring-2 ring-[#e5e7eb] dark:ring-[#050505]" />
 
-                        <div className="bg-white dark:bg-[#0F1117] border border-[#1597ff]/20 dark:border-indigo-500/20 rounded-2xl p-6 md:p-7 backdrop-blur-sm transition-all duration-500 hover:border-[#1597ff]/60 dark:hover:border-indigo-400/60 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#1597ff]/20 dark:hover:shadow-indigo-500/20 group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-[#f8f9fa] dark:group-hover:from-[#0F1117] dark:group-hover:to-[#161b22]">
+                        <div className="bg-white dark:bg-[#0F1117] border border-[#1597ff]/20 dark:border-indigo-500/20 rounded-2xl p-6 md:p-7 backdrop-blur-sm transition-all duration-500 hover:border-[#1597ff]/60
+                         dark:hover:border-[#1597ff]/60 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#1597ff]/20 dark:hover:shadow-indigo-500/20 group-hover:bg-linear-to-br group-hover:from-white group-hover:to-[#f8f9fa] dark:group-hover:from-[#0F1117] dark:group-hover:to-[#161b22]">
                           
                           <div className="flex items-start justify-between gap-3 mb-3">
                             <div>
-                              <h3 className="text-lg md:text-xl font-bold text-[#12141C] dark:text-white tracking-tight group-hover:text-[#1597ff] dark:group-hover:text-indigo-400 transition-colors" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+                              <h3 className="text-lg md:text-xl font-bold text-[#12141C] dark:text-white tracking-tight group-hover:text-[#1597ff] ansition-colors" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
                                 {item.role}
                               </h3>
-                              <p className="text-sm font-semibold text-[#1597ff] dark:text-indigo-400 mt-1">{item.company}</p>
+                              <p className="text-sm font-semibold text-[#1597ff] dark:text-[#1597ff] mt-1">{item.company}</p>
                             </div>
                             <span className="text-3xl opacity-10 group-hover:opacity-20 transition-opacity">{String(index + 1).padStart(2, "0")}</span>
                           </div>
@@ -176,7 +174,7 @@ export default function Experience() {
                             {item.tools.map((tool) => (
                               <span
                                 key={tool}
-                                className="inline-flex items-center px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#1597ff] dark:text-indigo-400 bg-[#1597ff]/10 dark:bg-indigo-500/10 border border-[#1597ff]/30 dark:border-indigo-500/30 rounded-lg hover:bg-[#1597ff]/20 dark:hover:bg-indigo-500/20 transition-colors"
+                                className="inline-flex items-center px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#1597ff] bg-[#1597ff]/10 dark:bg-indigo-500/10 border border-[#1597ff]/30 dark:border-[#1597ff]/60 rounded-lg hover:bg-[#1597ff]/20 dark:hover:bg-indigo-500/20 transition-colors"
                                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
                               >
                                 • {tool}
@@ -185,7 +183,7 @@ export default function Experience() {
                           </div>
 
                           {/* Corner Accent */}
-                          <div className="absolute top-0 right-0 w-1 h-12 bg-gradient-to-b from-[#1597ff] to-transparent rounded-bl-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="absolute top-0 right-0 w-1 h-12 bg-linear-to-b from-[#1597ff] to-transparent rounded-bl-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                       </div>
                     </div>
@@ -197,11 +195,7 @@ export default function Experience() {
         </div>
 
         {/* Bottom accent */}
-        <div className="mt-16 pt-8 border-t border-black/10 dark:border-[#303238]">
-          <p className="text-center text-sm text-[#6B7280] dark:text-[#8b949e]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            More experiences coming soon <span className="text-[#1597ff]">→</span>
-          </p>
-        </div>
+       
       </div>
     </section>
   );
