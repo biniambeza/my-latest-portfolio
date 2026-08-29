@@ -74,23 +74,7 @@ export default function Navbar() {
         {/* Mobile controls wrapper */}
         <div className="flex items-center gap-2 md:hidden">
           {/* Mobile Dark Mode Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-black/10 dark:hover:bg-[#202124] hover:text-[#12141C] dark:hover:text-white transition-colors"
-            aria-label="Toggle dark mode"
-          >
-            {theme === "dark" ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-              </svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              </svg>
-            )}
-          </button>
-
+          
           {/* Mobile Hamburger toggle */}
           <button
             className="relative w-9 h-9 flex items-center justify-center text-zinc-200"
@@ -144,15 +128,6 @@ export default function Navbar() {
             </li>
           ))}
           <li className="pt-2">
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsOpen(false)}
-              className="inline-flex items-center justify-center gap-1.5 w-full bg-[#1597ff] text-white px-5 py-2.5 text-sm font-bold"
-            >
-              Resume
-            </a>
           </li>
         </ul>
       </div>
