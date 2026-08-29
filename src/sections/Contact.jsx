@@ -174,27 +174,8 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="relative w-full max-w-xl lg:justify-self-end bg-[#0B0C14] border border-[#23283A] rounded-2xl overflow-hidden shadow-2xl shadow-black/30 transition-shadow duration-500 focus-within:shadow-indigo-500/20 focus-within:border-[#3B3FA0]"
           >
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-[#FF5F56] inline-block" />
-                <span className="w-3 h-3 rounded-full bg-[#FFBD2E] inline-block" />
-                <span className="w-3 h-3 rounded-full bg-[#27C93F] inline-block" />
-              </div>
-              <span
-                className="text-[10px] uppercase tracking-[0.2em] text-[#27C93F] flex items-center gap-1.5"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                bash -- 80x24
-              </span>
-            </div>
 
-            <div
-              className="px-5 sm:px-6 pt-4 text-[13px] text-[#7DD3FC] min-h-5"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              {typed}
-              <span className="inline-block w-1.75 h-3.25 bg-[#7DD3FC] ml-0.5 align-middle animate-[blink_1s_steps(1)_infinite]" />
-            </div>
+         
 
             <div className="p-5 sm:p-6 pt-4">
               <div className="grid sm:grid-cols-2 gap-3 mb-4">
@@ -248,20 +229,12 @@ export default function Contact() {
                   />
                 )}
               </button>
-              <p
-                className="mt-3 text-center text-[10px] text-white/30"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                opens your email app
-              </p>
+             
             </div>
           </form>
         </div>
       </div>
 
-      <style>{`
-        @keyframes blink { 50% { opacity: 0; } }
-      `}</style>
     </section>
   );
 }
