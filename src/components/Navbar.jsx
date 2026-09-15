@@ -21,7 +21,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Determine active section for nav highlight
       const sections = navLinks.map((link) => link.href.substring(1));
       const scrollPosition = window.scrollY + 200;
 
@@ -43,7 +42,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 dark:bg-[#0d0d0f]/85 backdrop-blur-md border-b border-black/[0.05] dark:border-white/[0.07] shadow-[0_4px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.3)] py-3"
+          ? "bg-white/80 dark:bg-black/85 backdrop-blur-md border-b border-black/[0.08] dark:border-white/[0.1] shadow-[0_4px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.4)] py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -51,25 +50,25 @@ export default function Navbar() {
         {/* Brand Logo */}
         <a
           href="#hero"
-          className="group flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-[#e8734a] rounded-lg"
+          className="group flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white rounded-lg"
           aria-label="Biniam Beza - Home"
         >
-          <div className="relative w-9 h-9 rounded-xl bg-linear-to-br from-[#e8734a] to-[#d4623c] flex items-center justify-center text-white font-medium text-sm shadow-md shadow-[#e8734a]/20 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-9 h-9 rounded-xl bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-medium text-sm shadow-md shadow-black/15 dark:shadow-white/10 transition-transform duration-300 group-hover:scale-105">
             BB
-            <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-white dark:ring-[#0d0d0f]" />
+            <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-black/30 dark:bg-white/30 ring-2 ring-white dark:ring-black" />
           </div>
           <div className="flex flex-col">
-            <span className="font-medium text-sm tracking-tight text-neutral-900 dark:text-white transition-colors">
+            <span className="font-medium text-sm tracking-tight text-black dark:text-white transition-colors">
               Biniam Beza
             </span>
-            <span className="text-[10px] font-mono font-normal text-[#e8734a] tracking-wider uppercase">
+            <span className="text-[10px] font-mono font-normal text-black/50 dark:text-white/50 tracking-wider uppercase">
               Full-Stack Dev
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-1 bg-black/[0.02] dark:bg-white/[0.03] p-1.5 rounded-full border border-black/[0.04] dark:border-white/[0.05]">
+        <div className="hidden md:flex items-center gap-1 bg-black/[0.03] dark:bg-white/[0.05] p-1.5 rounded-full border border-black/[0.06] dark:border-white/[0.08]">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -78,8 +77,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-4 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                   isActive
-                    ? "text-[#e8734a] dark:text-white bg-white dark:bg-white/[0.08] shadow-xs"
-                    : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                    ? "text-black dark:text-white bg-white dark:bg-white/[0.1] shadow-xs"
+                    : "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
                 }`}
               >
                 {link.name}
@@ -88,49 +87,41 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Action Controls (Theme Toggle & Contact CTA) */}
+        {/* Action Controls */}
         <div className="hidden md:flex items-center gap-3">
-          {/* Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-neutral-500 dark:text-neutral-400 bg-black/[0.03] dark:bg-white/[0.05] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] border border-black/[0.05] dark:border-white/[0.07] transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-black/50 dark:text-white/50 bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.08] dark:hover:bg-white/[0.12] border border-black/[0.06] dark:border-white/[0.08] transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
           >
             {theme === "dark" ? (
-              <Sun size={17} className="text-amber-400 transition-transform duration-300 hover:rotate-45" />
+              <Sun size={17} className="transition-transform duration-300 hover:rotate-45" />
             ) : (
-              <Moon size={17} className="text-neutral-600 transition-transform duration-300 hover:-rotate-12" />
+              <Moon size={17} className="transition-transform duration-300 hover:-rotate-12" />
             )}
           </button>
 
-          {/* Quick Contact Button */}
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-white bg-[#e8734a] hover:bg-[#d4623c] rounded-xl shadow-sm shadow-[#e8734a]/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-white dark:text-black bg-black dark:bg-white hover:bg-black/80 dark:hover:bg-white/80 rounded-xl shadow-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
             Let's Talk
             <ArrowUpRight size={14} />
           </a>
         </div>
 
-        {/* Mobile controls wrapper */}
+        {/* Mobile controls */}
         <div className="flex items-center gap-2 md:hidden">
-          {/* Mobile Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-neutral-500 dark:text-neutral-400 bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.05] dark:border-white/[0.07]"
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-black/50 dark:text-white/50 bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08]"
           >
-            {theme === "dark" ? (
-              <Sun size={17} className="text-amber-400" />
-            ) : (
-              <Moon size={17} className="text-neutral-600" />
-            )}
+            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
           </button>
 
-          {/* Mobile Hamburger toggle */}
           <button
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-neutral-700 dark:text-neutral-300 bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.05] dark:border-white/[0.07]"
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-black dark:text-white bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08]"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
@@ -146,7 +137,7 @@ export default function Navbar() {
           isOpen ? "max-h-80 opacity-100 mt-2" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="mx-4 p-4 rounded-2xl bg-white/95 dark:bg-[#141418]/95 backdrop-blur-xl border border-black/[0.07] dark:border-white/[0.09] shadow-2xl space-y-1">
+        <div className="mx-4 p-4 rounded-2xl bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border border-black/[0.1] dark:border-white/[0.12] shadow-2xl space-y-1">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -156,12 +147,12 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-[#e8734a]/10 text-[#e8734a] dark:bg-[#e8734a]/15"
-                    : "text-neutral-600 dark:text-neutral-400 hover:bg-black/[0.03] dark:hover:bg-white/[0.05]"
+                    ? "bg-black/[0.06] dark:bg-white/[0.1] text-black dark:text-white"
+                    : "text-black/50 dark:text-white/50 hover:bg-black/[0.03] dark:hover:bg-white/[0.05]"
                 }`}
               >
                 <span>{link.name}</span>
-                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#e8734a]" />}
+                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white" />}
               </a>
             );
           })}
@@ -169,7 +160,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-medium text-white bg-[#e8734a] rounded-xl shadow-xs"
+              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-medium text-white dark:text-black bg-black dark:bg-white rounded-xl shadow-xs"
             >
               Get In Touch
               <ArrowUpRight size={14} />
