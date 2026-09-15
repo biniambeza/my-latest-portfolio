@@ -1,201 +1,119 @@
-import { useEffect, useRef, useState } from "react";
-import { Briefcase, Code, Rocket } from "lucide-react";
+import { Briefcase, Code, Rocket, Calendar } from "lucide-react";
+import useScrollReveal from "../useScrollReveal";
 
-const experience = [
+const experiences = [
   {
-    period: "May 2022 — June 2026",
-    role: "Student & Developer",
-    company: "Bahir Dar University",
+    period: "2024 — 2025",
+    role: "Lead Full-Stack Developer",
+    company: "BahirLink (Final Year Capstone Project)",
     description:
-      "Computer Engineering student completing final year. Developing full-stack applications with focus on real-world problem solving, system architecture, and production-ready solutions.",
-    tools: ["React", "Node.js", "PostgreSQL", "Flutter"],
-    icon: Code,
-    color: "from-blue-500 to-cyan-500",
+      "Spearheaded the development and end-to-end architecture of a centralized emergency response and municipal public safety platform. Designed PostgreSQL relational schemas, built high-throughput Node.js microservices, and connected React web dashboard and Flutter mobile applications. Awarded 1st place for technical complexity and real-world impact.",
+    tools: ["React", "Flutter", "Node.js", "PostgreSQL", "REST APIs"],
+    icon: Rocket,
+    color: "#e8734a",
   },
   {
     period: "Apr 2025 — Aug 2025",
     role: "Web Developer Intern",
     company: "Ethio-Afric Tech Solutions",
     description:
-      "Developed responsive, user-friendly web applications using React.js. Implemented frontend interfaces and assisted in backend development with RESTful APIs. Worked with MongoDB and PostgreSQL databases. Collaborated with senior engineers on production-ready solutions.",
-    tools: ["React", "Node.js", "MongoDB", "PostgreSQL"],
+      "Engineered responsive, accessible frontend features with React.js and modern state management. Collaborated closely with senior software engineers on backend RESTful endpoints, database schemas with MongoDB and PostgreSQL, and integrated third-party client APIs.",
+    tools: ["React", "Node.js", "MongoDB", "PostgreSQL", "Git"],
     icon: Briefcase,
-    color: "from-purple-500 to-pink-500",
+    color: "#8b5cf6",
   },
   {
-    period: "2024 — 2025",
-    role: "Full-Stack Developer",
-    company: "Final Year Project - BahirLink",
+    period: "May 2022 — June 2026",
+    role: "B.Sc. in Computer Engineering",
+    company: "Bahir Dar University",
     description:
-      "Led development of a centralized emergency and public service platform. Designed system architecture, database systems, and integrated web and mobile applications. Project awarded 1st place for technical complexity and real-world impact.",
-    tools: ["React", "Flutter", "Node.js", "PostgreSQL"],
-    icon: Rocket,
-    color: "from-green-500 to-emerald-500",
+      "Completing final-year bachelor's degree with emphasis on software engineering, computer networks, database systems, and embedded computing. Actively built full-stack solutions and participated in competitive university hackathons.",
+    tools: ["Computer Architecture", "Algorithms", "Databases", "Software Engineering"],
+    icon: Code,
+    color: "#10b981",
   },
 ];
 
 export default function Experience() {
-  const [visible, setVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.href =
-      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-
-    return () => {
-      document.head.removeChild(link);
-      observer.disconnect();
-    };
-  }, []);
+  const headerRef = useScrollReveal();
+  const timelineRef = useScrollReveal({ stagger: 200 });
 
   return (
     <section
       id="experience"
-      ref={sectionRef}
-      className="relative min-h-screen scroll-mt-20 py-10 md:py-24 px-4 sm:px-6 bg-[#e5e7eb] dark:bg-[#050505] transition-colors duration-300 flex items-center overflow-hidden"
+      className="relative py-20 md:py-28 px-5 sm:px-8 bg-[#f5f2ef]/60 dark:bg-[#111114] transition-colors duration-300 overflow-hidden"
     >
-      <style>{`
-        @keyframes timeline-reveal {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slide-in-left {
-          from { opacity: 0; transform: translateX(-30px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes glow-pulse {
-          0%, 100% { box-shadow: 0 0 20px rgba(21, 151, 255, 0.3); }
-          50% { box-shadow: 0 0 30px rgba(21, 151, 255, 0.5); }
-        }
-        .timeline-item {
-          animation: timeline-reveal 0.6s ease-out forwards;
-        }
-        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-      `}</style>
-
-      <div className="max-w-5xl w-full mx-auto relative">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-16 md:mb-20">
-          <div>
-            <h2
-              className="text-4xl md:text-6xl font-bold text-[#12141C] dark:text-white tracking-tight leading-none mb-4"
-              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-            >
-              The work so far
-            </h2>
-            <div/>
+      <div className="relative max-w-4xl mx-auto w-full">
+        {/* Section Header */}
+        <div ref={headerRef} className="scroll-reveal text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#e8734a]/10 text-[#e8734a] text-xs font-mono font-normal uppercase tracking-wider mb-3">
+            <Briefcase size={14} />
+            Career & Education
           </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-neutral-900 dark:text-white tracking-tight">
+            Work experience &{" "}
+            <span className="accent-underline bg-linear-to-r from-[#e8734a] to-[#f5a623] bg-clip-text text-transparent">
+              journey
+            </span>
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-neutral-500 dark:text-neutral-400 max-w-lg mx-auto">
+            A track record of shipping impactful software, continuous learning, and software craftsmanship.
+          </p>
         </div>
 
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-[#1597ff] via-[#1597ff] to-transparent" />
+        {/* Timeline Container */}
+        <div ref={timelineRef} className="scroll-reveal relative pl-6 sm:pl-8 md:pl-10 space-y-10 before:absolute before:left-2 sm:before:left-3.5 before:top-3 before:bottom-3 before:w-[2px] before:bg-linear-to-b before:from-[#e8734a] before:via-amber-400/40 before:to-transparent">
+          {experiences.map((exp, index) => {
+            const Icon = exp.icon;
+            return (
+              <div key={index} data-reveal-child className="group relative">
+                {/* Timeline Node */}
+                <div
+                  className="absolute -left-6 sm:-left-8 md:-left-10 top-1.5 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white shadow-md ring-4 ring-[#f5f2ef] dark:ring-[#111114] transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: exp.color }}
+                >
+                  <Icon size={14} />
+                </div>
 
-          {/* Experience Items */}
-          <div className="space-y-8 md:space-y-12">
-            {experience.map((item, index) => {
-              const IconComponent = item.icon;
-              const isLeft = index % 2 === 0;
-
-              return (
-                <div key={item.period} className="timeline-item relative">
-                  {/* Desktop Layout */}
-                  <div className={`hidden md:grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center`}>
-                    {/* Left Content (alternating) */}
-                    <div className={isLeft ? "text-right" : "opacity-0 pointer-events-none"}>
-                      <p className="text-xs font-bold text-[#1597ff] uppercase tracking-widest" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                        {item.period}
-                      </p>
-                    </div>
-
-                    {/* Center Dot */}
-                    <div className="flex justify-center">
-                      <div className={`relative w-12 h-12 rounded-full bg-linear-to-br ${item.color} flex items-center justify-center text-white shadow-lg ring-4 ring-[#e5e7eb] dark:ring-[#050505] hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent size={20} />
-                      </div>
-                    </div>
-
-                    {/* Right Content (alternating) */}
-                    <div className={!isLeft ? "text-left" : "opacity-0 pointer-events-none"}>
-                      <p className="text-xs font-bold text-[#1597ff] uppercase tracking-widest" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                        {item.period}
-                      </p>
-                    </div>
+                {/* Card */}
+                <div className="p-6 sm:p-7 rounded-[18px] bg-white dark:bg-[#161619] border border-black/[0.06] dark:border-white/[0.07] shadow-xs hover:shadow-xl hover:shadow-[#e8734a]/5 dark:hover:shadow-black/60 transition-all duration-300 hover:border-[#e8734a]/40 dark:hover:border-[#e8734a]/50">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-normal text-[#e8734a] bg-[#e8734a]/10">
+                      <Calendar size={12} />
+                      {exp.period}
+                    </span>
+                    <span className="text-xs font-mono font-normal text-neutral-400 dark:text-neutral-500">
+                      0{index + 1}
+                    </span>
                   </div>
 
-                  {/* Card (below dot on desktop, below content on mobile) */}
-                  <div className={`md:grid gap-8 ${isLeft ? "md:grid-cols-[1fr_auto_1fr]" : "md:grid-cols-[1fr_auto_1fr]"}`}>
-                    {/* Mobile Period */}
-                    <div className="md:hidden mb-2">
-                      <p className="text-[10px] font-bold text-[#1597ff] uppercase tracking-widest" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                        {item.period}
-                      </p>
-                    </div>
+                  <h3 className="text-lg sm:text-xl font-medium text-neutral-900 dark:text-white tracking-tight">
+                    {exp.role}
+                  </h3>
+                  <div className="text-sm font-normal text-[#e8734a] mb-4">
+                    {exp.company}
+                  </div>
 
-                    <div className={`${isLeft ? "md:col-start-1 md:col-end-2" : "md:col-start-3 md:col-end-4"} md:row-start-2`}>
-                      <div className="group relative pl-12 md:pl-0">
-                        {/* Mobile dot */}
-                        <div className="md:hidden absolute -left-6 top-3 w-3 h-3 rounded-full bg-[#1597ff] ring-2 ring-[#e5e7eb] dark:ring-[#050505]" />
+                  <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-5">
+                    {exp.description}
+                  </p>
 
-                        <div className="bg-white dark:bg-[#0F1117] border border-[#1597ff]/20 dark:border-indigo-500/20 rounded-2xl p-6 md:p-7 backdrop-blur-sm transition-all duration-500 hover:border-[#1597ff]/60
-                         dark:hover:border-[#1597ff]/60 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#1597ff]/20 dark:hover:shadow-indigo-500/20 group-hover:bg-linear-to-br group-hover:from-white group-hover:to-[#f8f9fa] dark:group-hover:from-[#0F1117] dark:group-hover:to-[#161b22]">
-                          
-                          <div className="flex items-start justify-between gap-3 mb-3">
-                            <div>
-                              <h3 className="text-lg md:text-xl font-bold text-[#12141C] dark:text-white tracking-tight group-hover:text-[#1597ff] ansition-colors" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
-                                {item.role}
-                              </h3>
-                              <p className="text-sm font-semibold text-[#1597ff] dark:text-[#1597ff] mt-1">{item.company}</p>
-                            </div>
-                            <span className="text-3xl opacity-10 group-hover:opacity-20 transition-opacity">{String(index + 1).padStart(2, "0")}</span>
-                          </div>
-
-                          <p className="text-sm md:text-base text-[#6B7280] dark:text-[#8b949e] leading-relaxed mb-5 group-hover:text-[#4B5060] dark:group-hover:text-[#c9d1d9] transition-colors">
-                            {item.description}
-                          </p>
-
-                          {/* Tools/Skills */}
-                          <div className="flex flex-wrap gap-2">
-                            {item.tools.map((tool) => (
-                              <span
-                                key={tool}
-                                className="inline-flex items-center px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#1597ff] bg-[#1597ff]/10 dark:bg-indigo-500/10 border border-[#1597ff]/30 dark:border-[#1597ff]/60 rounded-lg hover:bg-[#1597ff]/20 dark:hover:bg-indigo-500/20 transition-colors"
-                                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                              >
-                                • {tool}
-                              </span>
-                            ))}
-                          </div>
-
-                          {/* Corner Accent */}
-                          <div className="absolute top-0 right-0 w-1 h-12 bg-linear-to-b from-[#1597ff] to-transparent rounded-bl-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                      </div>
-                    </div>
+                  {/* Tools / Tags */}
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-black/[0.04] dark:border-white/[0.04]">
+                    {exp.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="text-[11px] font-mono font-normal px-2.5 py-0.5 rounded-md bg-black/[0.02] dark:bg-white/[0.04] text-neutral-600 dark:text-neutral-400"
+                      >
+                        • {tool}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
-
-        {/* Bottom accent */}
-       
       </div>
     </section>
   );

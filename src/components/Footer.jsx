@@ -1,34 +1,56 @@
+import { ArrowUp } from "lucide-react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-black/10 bg-[#e5e7eb] px-6 py-7 transition-colors duration-300 dark:border-zinc-800 dark:bg-[#09090B]">
+    <footer className="border-t border-black/[0.05] dark:border-white/[0.07] bg-white dark:bg-[#0d0d0f] px-5 sm:px-8 py-8 transition-colors duration-300">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-        
-          <p
-            className="text-[#6B7280] dark:text-zinc-400 text-sm transition-colors duration-300"
-            style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-          >
-            © {new Date().getFullYear()} Biniam Beza
+        <div className="flex items-center gap-3">
+          <div className="w-7 h-7 rounded-lg bg-[#e8734a] flex items-center justify-center text-white text-xs font-medium shadow-xs">
+            BB
+          </div>
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">
+            © {currentYear} <span className="font-medium text-neutral-700 dark:text-neutral-300">Biniam Beza</span>. Built with React & Tailwind CSS.
           </p>
         </div>
 
-        <a
-          href="#hero"
-          className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#6B7280] hover:text-accent dark:text-zinc-400 dark:hover:text-indigo-300 transition-colors"
-        >
-          Back to top
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            className="transition-transform duration-300 group-hover:-translate-y-0.5"
+        <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3 text-neutral-500 dark:text-neutral-400">
+            <a
+              href="https://github.com/biniambeza"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub Profile"
+              className="hover:text-[#e8734a] transition-colors"
+            >
+              <FaGithub size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/biniam-beza-3a7b0542b?"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn Profile"
+              className="hover:text-[#e8734a] transition-colors"
+            >
+              <FaLinkedinIn size={16} />
+            </a>
+          </div>
+
+          <span className="w-px h-4 bg-black/8 dark:bg-white/8" />
+
+          <a
+            href="#hero"
+            className="group inline-flex items-center gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400 hover:text-[#e8734a] dark:hover:text-[#e8734a] transition-colors"
           >
-            <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+            <span>Back to top</span>
+            <ArrowUp
+              size={13}
+              className="transition-transform duration-200 group-hover:-translate-y-0.5"
+            />
+          </a>
+        </div>
       </div>
     </footer>
   );

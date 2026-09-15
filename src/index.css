@@ -1,23 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent: #1597ff;
-  --color-accent-purple: #1597ff; 
+  --color-accent: #000000;
+  --color-accent-hover: #1a1a1a;
+  --color-accent-glow: rgba(0, 0, 0, 0.12);
 }
 
 :root {
   --bg-main: #ffffff;
-  --bg-card: #ffffff;
-  --text-main: #070707;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #fafafa;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --text-main: #000000;
+  --text-muted: #555555;
+  --text-dim: #999999;
 }
 
 .dark {
-  --bg-main: #101014;
-  --bg-card: #282832;
-  --text-main: #f4f4f5;
+  --bg-main: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-surface-elevated: #111111;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  --text-dim: #666666;
 }
 
 html {
@@ -27,7 +38,154 @@ html {
 body {
   background-color: var(--bg-main);
   color: var(--text-main);
-  font-family: "IBM Plex Sans", sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-feature-settings: "rlig" 1, "calt" 1;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.6);
+}
+
+/* Glow & Ambient animations */
+@keyframes ambient-glow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(25px, -20px) scale(1.1);
+    opacity: 0.35;
+  }
+}
+
+.animate-ambient-glow {
+  animation: ambient-glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Scroll-triggered reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal [data-reveal-child] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.revealed [data-reveal-child] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gentle float for decorative elements */
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
+/* Subtle card tilt on hover */
+@keyframes wiggle-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(0.8deg); }
+  75% { transform: rotate(-0.8deg); }
+}
+
+.hover-tilt:hover {
+  animation: wiggle-tilt 0.4s ease-in-out;
+}
+
+/* Underline draw-in for highlighted words */
+.accent-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #000;
+  border-radius: 2px;
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark .accent-underline::after {
+  background: #fff;
+}
+
+.revealed .accent-underline::after {
+  width: 100%;
+}
+
+/* Cursor blink for typing effect */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #000;
+  margin-left: 2px;
+}
+
+.dark .typing-cursor::after {
+  color: #fff;
 }

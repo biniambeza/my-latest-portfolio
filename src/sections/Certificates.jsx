@@ -1,56 +1,46 @@
-import { useEffect } from "react";
 import { certificates } from "../data/certificates";
 import CertificateCard from "../components/CertificateCard";
+import { Award } from "lucide-react";
+import useScrollReveal from "../useScrollReveal";
 
 export default function Certificates() {
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.href =
-      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-    return () => document.head.removeChild(link);
-  }, []);
+  const headerRef = useScrollReveal();
+  const gridRef = useScrollReveal({ stagger: 130 });
 
   return (
-    <section 
-      id="certificates" 
-      className="relative min-h-screen scroll-mt-20 py- 0 md:py-24 px-4 sm:px-6 bg-[#e5e7eb] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
+    <section
+      id="certificates"
+      className="relative py-20 md:py-28 px-5 sm:px-8 bg-[#faf8f6]/50 dark:bg-[#0d0d0f] transition-colors duration-300 overflow-hidden"
     >
       <div className="relative max-w-6xl w-full mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7 md:mb-10">
+        {/* Section Header */}
+        <div ref={headerRef} className="scroll-reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <h2
-              className="text-3xl md:text-5xl font-bold text-[#12141C] dark:text-zinc-100 tracking-tight"
-              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-            >
-              Certificates &amp; Achievements
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#e8734a]/10 text-[#e8734a] text-xs font-mono font-normal uppercase tracking-wider mb-3">
+              <Award size={14} />
+              Verified Credentials
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-neutral-900 dark:text-white tracking-tight">
+              Certificates &{" "}
+              <span className="accent-underline bg-linear-to-r from-[#e8734a] to-[#f5a623] bg-clip-text text-transparent">
+                achievements
+              </span>
             </h2>
-          </div>
-          <div className="md:max-w-sm md:text-right">
-           
+            <p className="mt-2 text-sm sm:text-base text-neutral-500 dark:text-neutral-400 max-w-xl">
+              Academic honors, programming certifications, and verified credentials demonstrating technical excellence.
+            </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-          {certificates.map((cert, i) => (
-            <div
-              key={cert.id}
-              style={{ animationDelay: `${i * 60}ms` }}
-              className="animate-[fade-up_0.5s_ease-out_both]"
-            >
+        {/* Certificates Grid */}
+        <div ref={gridRef} className="scroll-reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certificates.map((cert) => (
+            <div key={cert.id} data-reveal-child className="h-full">
               <CertificateCard certificate={cert} />
             </div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes fade-up {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </section>
   );
 }

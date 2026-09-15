@@ -1,111 +1,115 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, ExternalLink, Award, Eye } from "lucide-react";
 
 export default function CertificateCard({ certificate }) {
   const { title, issuer, date, image, link } = certificate;
   const [isImageOpen, setIsImageOpen] = useState(false);
 
-  const initials = (title || "?")
-    .split(" ")
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
-
-  const CardInner = (
-    <div className="group relative h-full flex flex-col bg-white dark:bg-zinc-900 rounded-2xl border border-black/10 dark:border-zinc-800 p-3 md:p-4 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-/10 hover:border-[#1597ff]/60 dark:hover:border-[#1597ff]/600">
-      <div className="relative flex flex-col h-full">
-        <div className="flex items-center justify-between mb-4">
+  return (
+    <>
+      <div className="group relative flex flex-col h-full bg-white dark:bg-[#151518] rounded-[18px] border border-black/[0.06] dark:border-white/[0.07] p-5 shadow-xs hover:shadow-xl hover:shadow-[#e8734a]/5 dark:hover:shadow-black/60 hover:border-[#e8734a]/40 dark:hover:border-[#e8734a]/50 transition-all duration-300 hover:-translate-y-1 hover-tilt">
+        {/* Top bar: Image or Icon and Year */}
+        <div className="flex items-center justify-between gap-3 mb-4">
           {image ? (
             <button
               onClick={() => setIsImageOpen(true)}
-              className="relative cursor-pointer hover:opacity-80 transition-opacity"
-              title="Click to view full image"
+              className="relative w-14 h-14 rounded-xl overflow-hidden border border-black/[0.07] dark:border-white/[0.09] group/img cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#e8734a]"
+              title="Click to view full certificate"
             >
               <img
                 src={image}
                 alt={title}
-                className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover border border-black/6 dark:border-zinc-700"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover/img:scale-110"
               />
-              <div className="absolute inset-0 rounded-xl bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                <span className="text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">View</span>
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white">
+                <Eye size={16} />
               </div>
             </button>
           ) : (
-            <div
-              className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center text-white text-sm font-bold bg-accent shadow-sm shadow-indigo-500/20"
-              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-            >
-              {initials}
+            <div className="w-14 h-14 rounded-xl bg-[#e8734a]/10 text-[#e8734a] flex items-center justify-center font-medium">
+              <Award size={24} />
             </div>
           )}
-          <span className="text-[10px] font-bold text-black/30 dark:text-white/30" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            {date || "N/A"}
+
+          <span className="text-xs font-mono font-normal px-2.5 py-1 rounded-full bg-black/[0.02] dark:bg-white/[0.04] text-neutral-500 dark:text-neutral-400">
+            {date || "Verified"}
           </span>
         </div>
 
-        <h3
-            className="text-sm md:text-base font-bold text-[#12141C] dark:text-zinc-100 mb-2 leading-snug transition-colors"
-          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-        >
+        {/* Content */}
+        <h3 className="text-base font-medium text-neutral-900 dark:text-white leading-snug tracking-tight mb-1 group-hover:text-[#e8734a] transition-colors">
           {title}
         </h3>
-        <p className="text-sm text-[#6B7280] dark:text-zinc-400 mb-1 transition-colors">{issuer}</p>
-        {link && (
-          <a href={link} target="_blank" rel="noopener noreferrer" className="mt-auto pt-3 md:pt-5 inline-flex items-center gap-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-accent[#1597ff]/60 group-hover:text-accent-purple dark:group-hover:text-[#1597ff]/600 transition-colors" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            View credential
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              className="transition-transform duration-300 group-hover:translate-x-1"
+
+        <p className="text-xs font-normal text-neutral-500 dark:text-neutral-400 mb-5">
+          Issued by {issuer}
+        </p>
+
+        {/* Action button */}
+        <div className="mt-auto pt-3 border-t border-black/[0.04] dark:border-white/[0.04] flex items-center justify-between">
+          {link ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-[#e8734a] hover:text-[#d4623c] transition-colors"
             >
-              <path d="M7 17L17 7M17 7H8M17 7V16" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        )}
+              <span>Verify Credential</span>
+              <ExternalLink size={12} />
+            </a>
+          ) : (
+            <button
+              onClick={() => setIsImageOpen(true)}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-[#e8734a] hover:text-[#d4623c] transition-colors cursor-pointer"
+            >
+              <span>View Award</span>
+              <Eye size={12} />
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-  );
 
-  return (
-    <>
-      {link ? (
-        <a href={link} target="_blank" rel="noopener noreferrer" className="block h-full">
-          {CardInner}
-        </a>
-      ) : (
-        CardInner
-      )}
-
-      {/* Image Modal */}
+      {/* Lightbox Modal */}
       {isImageOpen && image && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 backdrop-blur-sm"
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={() => setIsImageOpen(false)}
         >
-          <div 
-            className="relative max-w-2xl max-h-[90vh] w-full h-full flex items-center justify-center"
+          <div
+            className="relative max-w-3xl max-h-[85vh] w-full bg-white dark:bg-[#1a1a20] p-4 sm:p-6 rounded-2xl shadow-2xl border border-white/20 flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={image}
-              alt={title}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg"
-            />
             <button
               onClick={() => setIsImageOpen(false)}
-              className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors z-10"
-              aria-label="Close image"
+              className="absolute top-4 right-4 p-2 rounded-full bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 text-neutral-800 dark:text-white transition-colors cursor-pointer"
+              aria-label="Close modal"
             >
-              <X size={24} />
+              <X size={20} />
             </button>
-            <p className="absolute bottom-4 left-4 right-4 text-white/70 text-sm text-center">
-              {title}
-            </p>
+
+            <h4 className="text-base sm:text-lg font-medium text-neutral-900 dark:text-white mb-4 pr-8 text-center">
+              {title} — {issuer}
+            </h4>
+
+            <div className="w-full max-h-[65vh] overflow-auto flex items-center justify-center rounded-xl bg-black/5 dark:bg-black/30 p-2">
+              <img
+                src={image}
+                alt={title}
+                className="max-h-[60vh] max-w-full object-contain rounded-lg shadow-md"
+              />
+            </div>
+
+            {link && (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-white bg-[#e8734a] hover:bg-[#d4623c] rounded-xl transition-colors"
+              >
+                <span>Open Official Verification Link</span>
+                <ExternalLink size={14} />
+              </a>
+            )}
           </div>
         </div>
       )}

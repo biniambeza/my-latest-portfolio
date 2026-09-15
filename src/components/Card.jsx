@@ -1,56 +1,69 @@
+import { ExternalLink, Award, Sparkles, FolderGit2 } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
 export default function Card({ project }) {
-  const { title, description, image, tags, live, demo, github, id } = project;
+  const { title, description, image, tags, live, github, id, award, featured } = project;
 
   return (
-    <article className="group flex flex-col h-full bg-white dark:bg-zinc-900 rounded-2xl border border-black/10 dark:border-zinc-800 overflow-hidden shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-900/10 dark:hover:shadow-black/40 dark:hover:border-indigo-800">
-      {/* Thumbnail */}
-      <div className="relative aspect-video overflow-hidden bg-[#12141C] dark:bg-zinc-950">
+    <article className="group flex flex-col h-full bg-white dark:bg-[#151518] rounded-[18px] border border-black/[0.06] dark:border-white/[0.07] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-[#e8734a]/8 dark:hover:shadow-black/60 hover:border-[#e8734a]/40 dark:hover:border-[#e8734a]/50 transition-all duration-300 hover:-translate-y-1.5 hover-tilt">
+      {/* Thumbnail Banner */}
+      <div className="relative aspect-16/9 overflow-hidden bg-neutral-100 dark:bg-[#1a1a20]">
         {image ? (
           <img
             src={image}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-accent">
-            <span
-              className="text-white/90 text-lg font-bold tracking-tight"
-              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-            >
-              {title}
+          <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-linear-to-br from-neutral-100 to-neutral-200 dark:from-[#161619] dark:to-[#1e1e24] text-center">
+            <div className="w-12 h-12 rounded-xl bg-[#e8734a]/10 text-[#e8734a] flex items-center justify-center mb-2 shadow-inner">
+              <FolderGit2 size={24} />
+            </div>
+            <span className="text-xs font-mono font-normal text-neutral-500 dark:text-neutral-400">
+              Full-Stack Architecture
             </span>
           </div>
         )}
-        <div className="absolute inset-x-0 top-0 flex items-center justify-between px-4 py-3 bg-[#12141C]/80 text-white/70">
-          <span className="text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            project {String(id).padStart(2, "0")}
+
+        {/* Project Number / Indicator Overlay */}
+        <div className="absolute inset-x-0 top-0 flex items-center justify-between px-3.5 py-2.5 bg-gradient-to-b from-black/60 via-black/20 to-transparent">
+          <span className="text-[10px] font-mono font-normal tracking-widest text-white/90 uppercase">
+            Project {String(id).padStart(2, "0")}
           </span>
-          <span className="w-2 h-2 rounded-full bg-[#27C93F] shadow-[0_0_0_3px_rgba(39,201,63,0.18)]" />
+          {featured && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#e8734a] text-white text-[10px] font-medium tracking-wide uppercase">
+              <Sparkles size={10} /> Featured
+            </span>
+          )}
         </div>
       </div>
 
       {/* Body */}
-      <div className="flex flex-col flex-1 p-5">
-        <div className="flex items-start justify-between gap-3 mb-2">
-          <h3
-            className="text-lg font-bold text-[#12141C] dark:text-zinc-100 tracking-tight transition-colors"
-          style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-          >
-            {title}
-          </h3>
-          <span className="text-indigo-200 text-2xl leading-none" aria-hidden="true">↗</span>
-        </div>
-        <p className="text-sm text-[#6B7280] dark:text-zinc-400 leading-relaxed mb-4 flex-1 transition-colors">
+      <div className="flex flex-col flex-1 p-5 sm:p-6">
+        {/* Award Badge if present */}
+        {award && (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs font-normal mb-3">
+            <Award size={14} className="text-amber-500" />
+            <span>{award}</span>
+          </div>
+        )}
+
+        <h3 className="text-lg sm:text-xl font-medium text-neutral-900 dark:text-white tracking-tight leading-snug mb-2 group-hover:text-[#e8734a] transition-colors">
+          {title}
+        </h3>
+
+        <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-5 flex-1">
           {description}
         </p>
 
+        {/* Tags */}
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-5">
+          <div className="flex flex-wrap gap-1.5 mb-6">
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] font-semibold px-2.5 py-1 rounded-full text-accent bg-accent/[0.07] dark:bg-indigo-500/10 border border-accent/15 dark:border-indigo-500/20"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                className="text-[11px] font-mono font-normal px-2.5 py-0.5 rounded-md bg-black/[0.02] dark:bg-white/[0.04] text-neutral-600 dark:text-neutral-400 border border-black/[0.04] dark:border-white/[0.06]"
               >
                 {tag}
               </span>
@@ -58,31 +71,31 @@ export default function Card({ project }) {
           </div>
         )}
 
-        <div className="flex items-center gap-4 pt-4 border-t border-black/6 dark:border-zinc-800 transition-colors">
-          {(live || demo) && (
+        {/* Action Links */}
+        <div className="flex items-center justify-between pt-4 border-t border-black/[0.05] dark:border-white/[0.05] mt-auto">
+          {live ? (
             <a
-              href={live || demo}
+              href={live}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-purple dark:hover:text-indigo-300 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-[#e8734a] hover:text-[#d4623c] transition-colors"
             >
-              Live Demo
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M7 17L17 7M17 7H8M17 7V16" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span>Live Application</span>
+              <ExternalLink size={13} />
             </a>
+          ) : (
+            <div />
           )}
+
           {github && (
             <a
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#3F4452] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-normal text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              Code
+              <FaGithub size={14} />
+              <span>Repository</span>
             </a>
           )}
         </div>

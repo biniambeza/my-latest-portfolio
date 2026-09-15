@@ -1,53 +1,43 @@
-import { useEffect, useRef, useState } from "react";
-import { Send, Check, ArrowUpRight, Phone, Mail } from "lucide-react";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { useState } from "react";
+import { Send, Check, ArrowUpRight, Phone, Mail, MessageSquare, MapPin } from "lucide-react";
+import { FaGithub, FaLinkedinIn, FaTelegramPlane } from "react-icons/fa";
+import useScrollReveal from "../useScrollReveal";
 
-const COMMAND = "$ ./send_message.sh --direct";
 const email = "biniambeza544@gmail.com";
 const phone = "+251993835149";
+
 const socials = [
-  { name: "Telegram", href: "https://t.me/ben_1216", icon: Send, color: "#1597ff", background: "#DCF3FE" },
-  { name: "GitHub", href: "https://github.com/biniambeza", icon: FaGithub, color: "#1597ff", background: "#E5E7EB" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/biniam-beza/", icon: FaLinkedinIn, color: "#1597ff", background: "#DBEAFE" },
+  {
+    name: "Telegram",
+    handle: "@ben_1216",
+    href: "https://t.me/ben_1216",
+    icon: FaTelegramPlane,
+    color: "#229ED9",
+  },
+  {
+    name: "GitHub",
+    handle: "github.com/biniambeza",
+    href: "https://github.com/biniambeza",
+    icon: FaGithub,
+    color: "#181717",
+  },
+  {
+    name: "LinkedIn",
+    handle: "linkedin.com/in/biniam-beza",
+    href: "https://www.linkedin.com/in/biniam-beza-3a7b0542b?",
+    icon: FaLinkedinIn,
+    color: "#0A66C2",
+  },
 ];
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
-  const [phoneCopied, setPhoneCopied] = useState(false);
-  const [typed, setTyped] = useState(() => {
-    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
-      return COMMAND;
-    }
-    return "";
-  });
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const [sending, setSending] = useState(false);
-  const pendingHref = useRef(null);
+  const leftRef = useScrollReveal();
+  const rightRef = useScrollReveal({ threshold: 0.1 });
 
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.href =
-      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-    return () => document.head.removeChild(link);
-  }, []);
-
-  // Signature moment: the terminal "types" its own launch command once on mount.
-  useEffect(() => {
-    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      return;
-    }
-    let i = 0;
-    const id = setInterval(() => {
-      i += 1;
-      setTyped(COMMAND.slice(0, i));
-      if (i >= COMMAND.length) clearInterval(id);
-    }, 45);
-    return () => clearInterval(id);
-  }, []);
-
-  const copyToClipboard = async (text, setCopiedState) => {
+  const copyToClipboard = async (text, setSuccess) => {
     try {
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(text);
@@ -59,182 +49,231 @@ export default function Contact() {
         document.execCommand("copy");
         document.body.removeChild(textArea);
       }
-      setCopiedState(true);
-      setTimeout(() => setCopiedState(false), 1800);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 2000);
+    } catch {
+      // Fallback
     }
   };
 
-  const handleCopy = () => copyToClipboard(email, setCopied);
-  const handlePhoneCopy = () => copyToClipboard(phone, setPhoneCopied);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (sending) return;
-    const form = new FormData(event.currentTarget);
-    const subject = encodeURIComponent(`Portfolio message from ${form.get("name")}`);
-    const body = encodeURIComponent(
-      `Name: ${form.get("name")}\nEmail: ${form.get("senderEmail")}\n\n${form.get("message")}`
-    );
-    pendingHref.current = `mailto:${email}?subject=${subject}&body=${body}`;
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setSending(true);
+    const form = new FormData(e.currentTarget);
+    const name = form.get("name") || "";
+    const senderEmail = form.get("senderEmail") || "";
+    const message = form.get("message") || "";
+
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${senderEmail}\n\nMessage:\n${message}`
+    );
+
     setTimeout(() => {
-      window.location.href = pendingHref.current;
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
       setSending(false);
-    }, 550);
+    }, 400);
   };
 
   return (
     <section
       id="contact"
-      className="relative min-h-screen scroll-mt-20 py-16 md:py-24 px-4 sm:px-6 bg-[#E5E7EB] dark:bg-[#09090B] transition-colors duration-300 overflow-hidden flex items-center"
+      className="relative py-20 md:py-28 px-5 sm:px-8 bg-[#f5f2ef]/60 dark:bg-[#111114] transition-colors duration-300 overflow-hidden"
     >
       <div className="relative max-w-6xl w-full mx-auto">
-        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-20 items-center">
-          {/* Left: thesis */}
-          <div className="text-left">
-            <h2
-              className="text-4xl md:text-6xl font-bold text-[#12141C] dark:text-zinc-100 mb-6 tracking-tight leading-[1.05]"
-              style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
-            >
-              Let's make
-              <span className="block text-[#1597ff]-600 dark:[#1597ff]-600">
-                something useful.
-              </span>
-            </h2>
-            <div className="w-16 h-1 bg-[#1597ff]/600 dark:[#1597ff]/600 mb-7 rounded-full" />
-            <p className="max-w-md text-[#4B5060] dark:text-zinc-400 leading-relaxed mb-8">
-              Have a project in mind, a question to ask, or an idea worth
-              exploring? Send a note and I will get back to you.
-            </p>
+        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-start">
+          {/* Left Column: Direct Info & Socials */}
+          <div ref={leftRef} className="scroll-reveal space-y-8">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#e8734a]/10 text-[#e8734a] text-xs font-mono font-normal uppercase tracking-wider mb-3">
+                <MessageSquare size={14} />
+                Get In Touch
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-neutral-900 dark:text-white tracking-tight leading-tight">
+                Let's build something{" "}
+                <span className="accent-underline bg-linear-to-r from-[#e8734a] to-[#f5a623] bg-clip-text text-transparent">
+                  remarkable
+                </span>
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-neutral-500 dark:text-neutral-400 max-w-md leading-relaxed">
+                Whether you have an upcoming project, a full-time engineering role, or a technical inquiry, my inbox is always open.
+              </p>
+            </div>
 
-            <button
-              onClick={handleCopy}
-              aria-live="polite"
-              className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5] rounded-md px-1 -mx-1"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              <Mail size={16} className="text-[#1597ff] dark:text-[#1597ff]" />
-              {email}
-              <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
-                {copied ? (
-                  <>
-                    <Check size={13} className="text-[#27C93F]" /> copied
-                  </>
-                ) : (
-                  "copy"
-                )}
-              </span>
-            </button>
+            {/* Direct Contact Cards */}
+            <div className="space-y-3">
+              {/* Email Card */}
+              <div className="flex items-center justify-between p-4 rounded-[18px] bg-white dark:bg-[#161619] border border-black/[0.06] dark:border-white/[0.07] shadow-xs hover:border-[#e8734a]/40 transition-colors">
+                <div className="flex items-center gap-3.5 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#e8734a]/10 text-[#e8734a] flex items-center justify-center shrink-0">
+                    <Mail size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 uppercase">
+                      Email Address
+                    </div>
+                    <a
+                      href={`mailto:${email}`}
+                      className="text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-[#e8734a] transition-colors truncate block"
+                    >
+                      {email}
+                    </a>
+                  </div>
+                </div>
 
-            <button
-              onClick={handlePhoneCopy}
-              aria-live="polite"
-              className="group flex items-center gap-2 text-sm text-[#6B7280] dark:text-zinc-400 hover:text-[#12141C] dark:hover:text-zinc-200 transition-colors mb-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1597ff] rounded-md px-1 -mx-1"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              <Phone size={16} className="text-[#1597ff] dark:text-[#1597ff]/600" />
-              {phone}
-              <span className="inline-flex items-center gap-1 text-[#9CA3AF] dark:text-zinc-500 group-hover:text-[#4B5563] dark:group-hover:text-zinc-300">
-                {phoneCopied ? (
-                  <>
-                    <Check size={13} className="text-[#27C93F]" /> copied
-                  </>
-                ) : (
-                  "copy"
-                )}
-              </span>
-            </button>
-
-            <div className="flex items-center gap-3">
-              {socials.map(({ name, href, icon: Icon, color, background }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${name}`}
-                  title={name}
-                  className="group w-11 h-11 flex items-center justify-center rounded-xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 text-[#4B5060] dark:text-zinc-400 hover:border-indigo-300 dark:hover:border-indigo-800 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]"
+                <button
+                  onClick={() => copyToClipboard(email, setCopiedEmail)}
+                  className="shrink-0 px-3 py-1.5 text-xs font-medium rounded-xl bg-black/[0.03] dark:bg-white/[0.05] hover:bg-[#e8734a] hover:text-white text-neutral-600 dark:text-neutral-400 transition-all flex items-center gap-1.5 cursor-pointer"
+                  title="Copy email"
                 >
-                  <span
-                    className="w-8 h-8 flex items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110"
-                    style={{ color, backgroundColor: background }}
-                  >
-                    <Icon size={17} />
-                  </span>
-                </a>
-              ))}
+                  {copiedEmail ? (
+                    <>
+                      <Check size={13} className="text-emerald-500" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <span>Copy</span>
+                  )}
+                </button>
+              </div>
+
+              {/* Phone Card */}
+              <div className="flex items-center justify-between p-4 rounded-[18px] bg-white dark:bg-[#161619] border border-black/[0.06] dark:border-white/[0.07] shadow-xs hover:border-[#e8734a]/40 transition-colors">
+                <div className="flex items-center gap-3.5 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    <Phone size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 uppercase">
+                      Direct Phone
+                    </div>
+                    <a
+                      href={`tel:${phone}`}
+                      className="text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-[#e8734a] transition-colors truncate block"
+                    >
+                      {phone}
+                    </a>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => copyToClipboard(phone, setCopiedPhone)}
+                  className="shrink-0 px-3 py-1.5 text-xs font-medium rounded-xl bg-black/[0.03] dark:bg-white/[0.05] hover:bg-emerald-500 hover:text-white text-neutral-600 dark:text-neutral-400 transition-all flex items-center gap-1.5 cursor-pointer"
+                  title="Copy phone"
+                >
+                  {copiedPhone ? (
+                    <>
+                      <Check size={13} className="text-emerald-500" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <span>Copy</span>
+                  )}
+                </button>
+              </div>
+
+              {/* Location indicator */}
+              <div className="flex items-center gap-3 px-4 py-3 rounded-[18px] bg-white/60 dark:bg-[#161619]/60 border border-black/[0.04] dark:border-white/[0.05] text-xs font-mono text-neutral-500 dark:text-neutral-400">
+                <MapPin size={15} className="text-[#e8734a]" />
+                <span>Addis Ababa, Ethiopia (UTC+3) • Open to Remote & Relocation</span>
+              </div>
+            </div>
+
+            {/* Social Network Badges */}
+            <div>
+              <div className="text-xs font-mono font-normal text-neutral-400 dark:text-neutral-500 uppercase mb-3">
+                Connect Directly
+              </div>
+              <div className="flex flex-wrap gap-2.5">
+                {socials.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white dark:bg-[#161619] border border-black/[0.06] dark:border-white/[0.07] hover:border-[#e8734a] text-xs font-medium text-neutral-600 dark:text-neutral-400 transition-all hover:-translate-y-0.5 shadow-xs"
+                    >
+                      <Icon size={15} style={{ color: social.color }} />
+                      <span>{social.name}</span>
+                      <ArrowUpRight size={12} className="text-neutral-400" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Right: terminal-styled form */}
-          <form
-            onSubmit={handleSubmit}
-            className="relative w-full max-w-xl lg:justify-self-end bg-[#0B0C14] border border-[#23283A] rounded-2xl overflow-hidden shadow-2xl shadow-black/30 transition-shadow duration-500 focus-within:shadow-indigo-500/20 focus-within:border-[#3B3FA0]"
-          >
+          {/* Right Column: Interactive Contact Form */}
+          <div ref={rightRef} className="scroll-reveal p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#161619] border border-black/[0.07] dark:border-white/[0.08] shadow-xl shadow-black/[0.02] dark:shadow-black/50">
+            <h3 className="text-xl font-medium text-neutral-900 dark:text-white tracking-tight mb-2">
+              Send a Direct Message
+            </h3>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-6">
+              Fill out the form below and it will prepare an email directly to my inbox.
+            </p>
 
-         
-
-            <div className="p-5 sm:p-6 pt-4">
-              <div className="grid sm:grid-cols-2 gap-3 mb-4">
-                <label className="text-left">
-                  <span className="block text-xs font-bold text-white/60 mb-1.5">
-                    Name
-                  </span>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-1.5">
+                    Your Name
+                  </label>
                   <input
                     required
-                    name="name"
                     type="text"
-                    placeholder="Your name"
-                    className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#1597ff]/600 focus:bg-white/10 transition-colors"
+                    name="name"
+                    placeholder="Jane Doe"
+                    className="w-full px-3.5 py-2.5 rounded-xl text-sm bg-black/[0.01] dark:bg-white/[0.03] border border-black/[0.07] dark:border-white/[0.08] text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#e8734a] focus:ring-2 focus:ring-[#e8734a]/20 transition-all"
                   />
-                </label>
-                <label className="text-left">
-                  <span className="block text-xs font-bold text-white/60 mb-1.5">
-                    Email
-                  </span>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-1.5">
+                    Email Address
+                  </label>
                   <input
                     required
-                    name="senderEmail"
                     type="email"
-                    placeholder="you@example.com"
-                    className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#1597ff]/600 focus:bg-white/10 transition-colors"
+                    name="senderEmail"
+                    placeholder="jane@example.com"
+                    className="w-full px-3.5 py-2.5 rounded-xl text-sm bg-black/[0.01] dark:bg-white/[0.03] border border-black/[0.07] dark:border-white/[0.08] text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#e8734a] focus:ring-2 focus:ring-[#e8734a]/20 transition-all"
                   />
-                </label>
+                </div>
               </div>
-              <label className="block text-left mb-4">
-                <span className="block text-xs font-bold text-white/60 mb-1.5">
+
+              <div>
+                <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-1.5">
                   Message
-                </span>
+                </label>
                 <textarea
                   required
+                  rows={5}
                   name="message"
-                  rows="4"
-                  placeholder="Tell me a little about your idea..."
-                  className="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-indigo-400 focus:bg-white/10 transition-colors"
+                  placeholder="Tell me about your project, timeline, or position..."
+                  className="w-full px-3.5 py-2.5 rounded-xl text-sm bg-black/[0.01] dark:bg-white/[0.03] border border-black/[0.07] dark:border-white/[0.08] text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#e8734a] focus:ring-2 focus:ring-[#e8734a]/20 transition-all resize-none"
                 />
-              </label>
+              </div>
+
               <button
                 type="submit"
                 disabled={sending}
-                className="group w-full inline-flex items-center justify-center gap-2 bg-[#1597ff] hover:bg-[#1597ff] disabled:opacity-70 disabled:cursor-wait text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-medium text-sm text-white bg-[#e8734a] hover:bg-[#d4623c] disabled:opacity-75 shadow-lg shadow-[#e8734a]/20 hover:shadow-xl hover:shadow-[#e8734a]/25 transition-all duration-200 cursor-pointer active:scale-[0.99]"
               >
-                {sending ? "Opening your email app…" : "Send message"}
-                {!sending && (
-                  <ArrowUpRight
-                    size={16}
-                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
+                {sending ? (
+                  <span>Opening Mail Client...</span>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send size={15} />
+                  </>
                 )}
               </button>
-             
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-
     </section>
   );
 }
