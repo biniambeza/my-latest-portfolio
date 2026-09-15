@@ -21,11 +21,11 @@
 }
 
 .dark {
-  --bg-main: #000000;
-  --bg-surface: #0a0a0a;
-  --bg-surface-elevated: #111111;
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.2);
+  --bg-main: #0a0a0c;
+  --bg-surface: #0a0a0c;
+  --bg-surface-elevated: #111114;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
   --text-main: #ffffff;
   --text-muted: #aaaaaa;
   --text-dim: #666666;
@@ -33,15 +33,27 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   background-color: var(--bg-main);
   color: var(--text-main);
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   font-weight: 400;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-main);
 }
 
 /* Custom modern scrollbar */

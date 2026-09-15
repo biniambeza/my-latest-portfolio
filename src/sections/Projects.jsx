@@ -11,7 +11,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-14 sm:py-20 px-4 sm:px-6 bg-white dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col justify-center py-20 px-4 sm:px-6 bg-white dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
     >
       <div className="relative max-w-5xl mx-auto w-full">
         {/* Section Header */}

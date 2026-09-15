@@ -75,7 +75,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-14 sm:py-20 px-4 sm:px-6 bg-[#fafafa] dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col justify-center py-20 px-4 sm:px-6 bg-white dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
     >
       <div className="relative max-w-5xl w-full mx-auto">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-start">

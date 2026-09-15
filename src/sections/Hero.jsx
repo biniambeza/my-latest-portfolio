@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center pt-24 pb-16 px-4 sm:px-6 text-center bg-white dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center pt-20 pb-16 px-4 sm:px-6 text-center bg-white dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
     >
       {/* Subtle ambient lighting */}
       <div
@@ -20,11 +20,6 @@ export default function Hero() {
         ref={containerRef}
         className="scroll-reveal relative z-10 max-w-xl mx-auto flex flex-col items-center"
       >
-        {/* Status Pill Badge */}
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800/90 text-neutral-600 dark:text-neutral-300 text-[9px] font-mono tracking-wider uppercase mb-4 shadow-xs">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span>OPEN TO GLOBAL REMOTE & US/EU ROLES</span>
-        </div>
 
         {/* Subtitle / Role kicker */}
         <p className="text-[9px] sm:text-[10px] font-medium tracking-[0.2em] text-neutral-500 dark:text-neutral-400 uppercase mb-2.5">
