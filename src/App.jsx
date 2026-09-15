@@ -2,20 +2,20 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./sections/Hero";
 import Experience from "./sections/Experience";
-import Skills from "./sections/Skills";
-import Projects from "./sections/Projects";
 import Certificates from "./sections/Certificates";
+import Projects from "./sections/Projects";
+import Skills from "./sections/Skills";
 import Contact from "./sections/Contact";
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0c] text-black dark:text-white selection:bg-neutral-200 dark:selection:bg-neutral-800">
       <Navbar />
       <Hero />
-      <Skills />
-      <Projects />
       <Experience />
       <Certificates />
+      <Projects />
+      <Skills />
       <Contact />
       <Footer />
     </div>

@@ -39,7 +39,7 @@ const categories = ["All", "Frontend", "Backend", "Database", "Tools"];
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState("All");
   const headerRef = useScrollReveal();
-  const gridRef = useScrollReveal({ stagger: 100 });
+  const gridRef = useScrollReveal({ stagger: 80 });
 
   const filteredSkills = activeCategory === "All"
     ? skills
@@ -48,17 +48,17 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-20 md:py-28 px-5 sm:px-8 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-300 overflow-hidden"
+      className="relative py-14 sm:py-20 px-4 sm:px-6 bg-[#fafafa] dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
     >
-      <div className="relative max-w-6xl w-full mx-auto">
+      <div className="relative max-w-5xl w-full mx-auto">
         {/* Section Header */}
-        <div ref={headerRef} className="scroll-reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div ref={headerRef} className="scroll-reveal flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-black/[0.05] dark:bg-white/[0.08] text-black/60 dark:text-white/60 text-xs font-mono font-normal uppercase tracking-wider mb-3">
-              <Cpu size={14} />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-black/[0.04] dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-400 text-[9px] font-mono uppercase tracking-wider mb-2">
+              <Cpu size={11} />
               Technical Arsenal
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-black dark:text-white tracking-tight">
+            <h2 className="text-base sm:text-lg md:text-xl font-medium text-black dark:text-white tracking-tight">
               A toolkit engineered for{" "}
               <span className="accent-underline">
                 performance
@@ -67,17 +67,17 @@ export default function Skills() {
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 bg-white dark:bg-white/[0.04] p-1.5 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] shadow-xs">
+          <div className="flex flex-wrap items-center gap-1.5 bg-white dark:bg-white/[0.03] p-1 rounded-xl border border-black/[0.06] dark:border-white/[0.08] shadow-xs">
             {categories.map((category) => {
               const isActive = activeCategory === category;
               return (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-lg text-[10px] font-medium transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-black dark:bg-white text-white dark:text-black shadow-sm"
-                      : "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
+                      ? "bg-black dark:bg-white text-white dark:text-black shadow-xs"
+                      : "text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white"
                   }`}
                 >
                   {category}
@@ -88,42 +88,39 @@ export default function Skills() {
         </div>
 
         {/* Skills Grid */}
-        <div ref={gridRef} className="scroll-reveal grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div ref={gridRef} className="scroll-reveal grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {filteredSkills.map((skill) => {
             const Icon = icons[skill.name];
             return (
               <div
                 key={skill.name}
                 data-reveal-child
-                className="group relative p-5 rounded-[18px] bg-white dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08] shadow-xs hover:shadow-xl hover:shadow-black/[0.06] dark:hover:shadow-black/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between hover-tilt"
+                className="group relative p-3.5 rounded-xl bg-white dark:bg-neutral-900/60 border border-black/[0.06] dark:border-neutral-800/80 shadow-xs hover:border-black/20 dark:hover:border-neutral-600 transition-all duration-200 flex flex-col justify-between"
               >
-                {/* Hover top glow bar */}
-                <div className="absolute top-0 left-6 right-6 h-[2px] rounded-full bg-black dark:bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-
                 <div>
-                  <div className="flex items-start justify-between gap-2 mb-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-xs bg-black/[0.04] dark:bg-white/[0.08] text-black/70 dark:text-white/70">
-                      {Icon && <Icon size={24} />}
+                  <div className="flex items-start justify-between gap-2 mb-2.5">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-black/[0.04] dark:bg-white/[0.06] text-neutral-700 dark:text-neutral-300">
+                      {Icon && <Icon size={16} />}
                     </div>
 
-                    <span className="text-[10px] font-mono font-normal uppercase tracking-wider px-2 py-0.5 rounded-md bg-black/[0.04] dark:bg-white/[0.06] text-black/40 dark:text-white/40">
+                    <span className="text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-black/[0.04] dark:bg-white/[0.06] text-neutral-500 dark:text-neutral-400">
                       {skill.type}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-medium text-black dark:text-white tracking-tight mb-1">
+                  <h3 className="text-xs sm:text-[13px] font-medium text-black dark:text-white tracking-tight mb-1">
                     {skill.name}
                   </h3>
-                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed">
+                  <p className="text-[10px] text-neutral-500 dark:text-neutral-400 leading-normal">
                     {skill.description}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-normal text-black/30 dark:text-white/30">
+                <div className="mt-3 pt-2 border-t border-black/[0.04] dark:border-white/[0.05] flex items-center justify-between">
+                  <span className="text-[9px] font-mono text-neutral-400 dark:text-neutral-500">
                     Production Ready
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-black/20 dark:bg-white/20 group-hover:bg-black dark:group-hover:bg-white transition-colors" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-black/20 dark:bg-white/20 group-hover:bg-black dark:group-hover:bg-white transition-colors" />
                 </div>
               </div>
             );

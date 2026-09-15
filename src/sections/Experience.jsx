@@ -7,7 +7,7 @@ const experiences = [
     role: "Lead Full-Stack Developer",
     company: "BahirLink (Final Year Capstone Project)",
     description:
-      "Spearheaded the development and end-to-end architecture of a centralized emergency response and municipal public safety platform. Designed PostgreSQL relational schemas, built high-throughput Node.js microservices, and connected React web dashboard and Flutter mobile applications. Awarded 1st place for technical complexity and real-world impact.",
+      "Spearheaded the development and architecture of a centralized emergency response platform. Designed PostgreSQL relational schemas, built Node.js microservices, and connected React web dashboard and Flutter mobile apps. Awarded 1st place for technical complexity.",
     tools: ["React", "Flutter", "Node.js", "PostgreSQL", "REST APIs"],
     icon: Rocket,
   },
@@ -16,7 +16,7 @@ const experiences = [
     role: "Web Developer Intern",
     company: "Ethio-Afric Tech Solutions",
     description:
-      "Engineered responsive, accessible frontend features with React.js and modern state management. Collaborated closely with senior software engineers on backend RESTful endpoints, database schemas with MongoDB and PostgreSQL, and integrated third-party client APIs.",
+      "Engineered responsive, accessible frontend features with React.js. Collaborated on backend RESTful endpoints, database schemas with MongoDB and PostgreSQL, and integrated third-party client APIs.",
     tools: ["React", "Node.js", "MongoDB", "PostgreSQL", "Git"],
     icon: Briefcase,
   },
@@ -25,7 +25,7 @@ const experiences = [
     role: "B.Sc. in Computer Engineering",
     company: "Bahir Dar University",
     description:
-      "Completing final-year bachelor's degree with emphasis on software engineering, computer networks, database systems, and embedded computing. Actively built full-stack solutions and participated in competitive university hackathons.",
+      "Completing final-year bachelor's degree with emphasis on software engineering, computer networks, database systems, and embedded computing. Actively built full-stack solutions.",
     tools: ["Computer Architecture", "Algorithms", "Databases", "Software Engineering"],
     icon: Code,
   },
@@ -33,71 +33,71 @@ const experiences = [
 
 export default function Experience() {
   const headerRef = useScrollReveal();
-  const timelineRef = useScrollReveal({ stagger: 200 });
+  const timelineRef = useScrollReveal({ stagger: 150 });
 
   return (
     <section
       id="experience"
-      className="relative py-20 md:py-28 px-5 sm:px-8 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-300 overflow-hidden"
+      className="relative py-14 sm:py-20 px-4 sm:px-6 bg-[#fafafa] dark:bg-[#0a0a0c] transition-colors duration-300 overflow-hidden"
     >
-      <div className="relative max-w-4xl mx-auto w-full">
+      <div className="relative max-w-3xl mx-auto w-full">
         {/* Section Header */}
-        <div ref={headerRef} className="scroll-reveal text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-black/[0.05] dark:bg-white/[0.08] text-black/60 dark:text-white/60 text-xs font-mono font-normal uppercase tracking-wider mb-3">
-            <Briefcase size={14} />
+        <div ref={headerRef} className="scroll-reveal text-center mb-10">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-black/[0.04] dark:bg-white/[0.06] text-neutral-600 dark:text-neutral-400 text-[9px] font-mono uppercase tracking-wider mb-2">
+            <Briefcase size={11} />
             Career & Education
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-black dark:text-white tracking-tight">
+          <h2 className="text-base sm:text-lg md:text-xl font-medium text-black dark:text-white tracking-tight">
             Work experience &{" "}
             <span className="accent-underline">
               journey
             </span>
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-black/40 dark:text-white/40 max-w-lg mx-auto">
-            A track record of shipping impactful software, continuous learning, and software craftsmanship.
+          <p className="mt-1.5 text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 max-w-md mx-auto">
+            A track record of shipping impactful software, continuous learning, and craftsmanship.
           </p>
         </div>
 
         {/* Timeline Container */}
-        <div ref={timelineRef} className="scroll-reveal relative pl-6 sm:pl-8 md:pl-10 space-y-10 before:absolute before:left-2 sm:before:left-3.5 before:top-3 before:bottom-3 before:w-[2px] before:bg-linear-to-b before:from-black/30 before:via-black/10 before:to-transparent dark:before:from-white/30 dark:before:via-white/10 dark:before:to-transparent">
+        <div ref={timelineRef} className="scroll-reveal relative pl-6 sm:pl-8 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[1.5px] before:bg-linear-to-b before:from-black/20 before:via-black/10 before:to-transparent dark:before:from-white/20 dark:before:via-white/10 dark:before:to-transparent">
           {experiences.map((exp, index) => {
             const Icon = exp.icon;
             return (
               <div key={index} data-reveal-child className="group relative">
                 {/* Timeline Node */}
-                <div className="absolute -left-6 sm:-left-8 md:-left-10 top-1.5 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-black dark:bg-white text-white dark:text-black shadow-md ring-4 ring-[#fafafa] dark:ring-[#0a0a0a] transition-transform duration-300 group-hover:scale-110">
-                  <Icon size={14} />
+                <div className="absolute -left-6 sm:-left-8 top-1 w-5 h-5 rounded-full flex items-center justify-center bg-black dark:bg-white text-white dark:text-black shadow-xs ring-2 ring-[#fafafa] dark:ring-[#0a0a0c]">
+                  <Icon size={10} />
                 </div>
 
                 {/* Card */}
-                <div className="p-6 sm:p-7 rounded-[18px] bg-white dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.09] shadow-xs hover:shadow-xl hover:shadow-black/[0.06] dark:hover:shadow-black/60 transition-all duration-300 hover:border-black/20 dark:hover:border-white/20">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-normal text-black/60 dark:text-white/60 bg-black/[0.04] dark:bg-white/[0.07]">
-                      <Calendar size={12} />
+                <div className="p-4 sm:p-4.5 rounded-xl bg-white dark:bg-neutral-900/60 border border-black/[0.06] dark:border-neutral-800/80 shadow-xs hover:border-black/20 dark:hover:border-neutral-600 transition-all duration-200">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono text-neutral-600 dark:text-neutral-400 bg-black/[0.04] dark:bg-white/[0.06]">
+                      <Calendar size={10} />
                       {exp.period}
                     </span>
-                    <span className="text-xs font-mono font-normal text-black/25 dark:text-white/25">
+                    <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500">
                       0{index + 1}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-medium text-black dark:text-white tracking-tight">
+                  <h3 className="text-xs sm:text-[13px] font-medium text-black dark:text-white tracking-tight">
                     {exp.role}
                   </h3>
-                  <div className="text-sm font-normal text-black/50 dark:text-white/50 mb-4">
+                  <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mb-2.5">
                     {exp.company}
                   </div>
 
-                  <p className="text-xs sm:text-sm text-black/40 dark:text-white/40 leading-relaxed mb-5">
+                  <p className="text-[10px] sm:text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed mb-3">
                     {exp.description}
                   </p>
 
                   {/* Tools */}
-                  <div className="flex flex-wrap gap-2 pt-2 border-t border-black/[0.05] dark:border-white/[0.06]">
+                  <div className="flex flex-wrap gap-1 pt-2 border-t border-black/[0.04] dark:border-white/[0.05]">
                     {exp.tools.map((tool) => (
                       <span
                         key={tool}
-                        className="text-[11px] font-mono font-normal px-2.5 py-0.5 rounded-md bg-black/[0.03] dark:bg-white/[0.05] text-black/50 dark:text-white/50"
+                        className="text-[9px] font-mono px-2 py-0.5 rounded bg-black/[0.03] dark:bg-white/[0.05] text-neutral-500 dark:text-neutral-400"
                       >
                         • {tool}
                       </span>
