@@ -13,17 +13,17 @@ export const projectsList = [
     github: "https://github.com/biniambeza",
     live: "https://bahirdarlinkweb.vercel.app/",
   },
-  {
+    {
     id: 2,
-    featured: false,
+    featured: true,
     award: null,
-    title: "AfroTask — Collaborative Sprint & Workflow Management",
+    title: "Medhanit — Pharmacy Inventory Management System",
     description:
-      "Full-stack team productivity platform featuring interactive Kanban boards, sprint tracking, real-time team notifications, and granular role-based permissions. Designed for agile engineering squads to streamline issue tracking and deployment milestones.",
-    tags: ["React", "Node.js", "PostgreSQL", "Express.js", "Tailwind CSS"],
+      "Full-stack pharmacy management platform featuring role-based access control, real-time stock tracking, batch and expiry monitoring, and automated low-stock alerts. Designed for pharmacies to streamline inventory, sales, and supplier workflows across admin, pharmacist, and cashier roles.",
+    tags: ["React", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
     image: null,
     github: "https://github.com/biniambeza",
-    live: "https://github.com/biniambeza",
+    live: "https://pharmacy-inventory-management-sand.vercel.app",
   },
   {
     id: 3,
