@@ -26,15 +26,14 @@ export const projectsList = [
     live: "https://pharmacy-inventory-management-sand.vercel.app",
   },
   {
-    id: 3,
-    featured: false,
-    award: null,
-    title: "PulsePay — Merchant Billing & Payment Processing Suite",
-    description:
-      "Secure backend payment gateway integration with interactive merchant analytics dashboard. Implements encrypted API keys, webhook event listeners, automated billing reconciliation, and JWT token-based authentication.",
-    tags: ["Node.js", "Express.js", "MongoDB", "REST APIs", "React"],
-    image: null,
-    github: "https://github.com/biniambeza",
-    live: "https://github.com/biniambeza",
-  },
+  "id": 3,
+  "featured": true,
+  "award": null,
+  "title": "Premium Coffee Export Brand Website",
+  "description": "A high-performance brand showcase for a green coffee exporter. Highlights origin traceability, sustainable farming practices, product catalogs, and integrates direct B2B communication channels for international wholesale buyers.",
+  "tags": ["React", "Tailwind CSS", "Vite", "Web3Forms"],
+  "image": null,
+  "github": "https://github.com/biniambeza",
+  "live": "https://github.com/biniambeza"
+},
 ];
