@@ -10,7 +10,7 @@ export const projectsList = [
       "A centralized high-availability platform connecting Ethiopian citizens with emergency dispatch and public municipal service providers. Incorporates real-time incident mapping, video call assessment, emergency alerts, and cross-platform mobile dispatch. Awarded 1st place among all university engineering capstone projects.",
     tags: ["React", "Flutter", "Node.js", "PostgreSQL", "Tailwind CSS"],
     image: BahirlinkImage,
-    github: "https://github.com/biniambeza",
+    github: "https://github.com/biniambeza/bahirdarLink_web",
     live: "https://bahirdarlinkweb.vercel.app/",
   },
     {
@@ -22,7 +22,7 @@ export const projectsList = [
       "Full-stack pharmacy management platform featuring role-based access control, real-time stock tracking, batch and expiry monitoring, and automated low-stock alerts. Designed for pharmacies to streamline inventory, sales, and supplier workflows across admin, pharmacist, and cashier roles.",
     tags: ["React", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
     image: null,
-    github: "https://github.com/biniambeza",
+    github: "https://github.com/biniambeza/Pharmacy_inventory_management",
     live: "https://pharmacy-inventory-management-sand.vercel.app",
   },
   {
@@ -34,6 +34,6 @@ export const projectsList = [
   "tags": ["React", "Tailwind CSS", "Vite", "Web3Forms"],
   "image": null,
   "github": "https://github.com/biniambeza",
-  "live": "https://github.com/biniambeza"
+  "live": "celine-cofee.vercel.app"
 },
 ];
