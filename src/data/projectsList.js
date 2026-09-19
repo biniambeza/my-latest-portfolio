@@ -34,6 +34,6 @@ export const projectsList = [
   "tags": ["React", "Tailwind CSS", "Vite", "Web3Forms"],
   "image": null,
   "github": "https://github.com/biniambeza",
-  "live": "celin-cofee.vercel.app"
+  "live": "https://celin-cofee.vercel.app"
 },
 ];
