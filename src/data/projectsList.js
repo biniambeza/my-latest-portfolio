@@ -23,7 +23,7 @@ export const projectsList = [
     tags: ["React", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
     image: null,
     github: "https://github.com/biniambeza/Pharmacy_inventory_management",
-    live: "https://pharmacy-inventory-management-sand.vercel.app",
+    live: "https://pharmacy-inventory-management-sand.vercel.app/",
   },
   {
   "id": 3,
